@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React from "react";
-import { AiOutlineSearch } from "react-icons/Ai";
-import { AiOutlineMenu } from "react-icons/Ai";
+import { AiOutlineSearch } from "react-icons/ai";
+import { AiOutlineMenu } from "react-icons/ai";
 import { Link } from "react-router-dom";
 const Header = () => {
   return (
