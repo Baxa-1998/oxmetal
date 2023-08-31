@@ -1,0 +1,362 @@
+// eslint-disable-next-line no-unused-vars
+import React, { useEffect, useState } from "react";
+import ProductCart from "../components/ProductCart";
+import { useSelector } from "react-redux";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import { FreeMode, Pagination, Navigation } from "swiper/modules";
+import { Link } from "react-router-dom";
+const Home = () => {
+  const goods = useSelector((state) => state.goods.data);
+
+
+
+  return (
+    <>
+      <div className="  flex justify-between items-center ">
+        <div className="w-[49%] ">
+          <img src="/fonOxMetal.png" className="w-[100%]" alt="" />
+        </div>
+
+        <div className="max-w-[49%] pr-5">
+          <img
+            src="/logoTitle.svg"
+            className="w-[244px] mb-[30px] mb:w-[80%] mb:mb-5"
+            alt=""
+          />
+          <h1
+            className="text-[68px] text-[#1e1e1e] font-[900] leading-[7 5px] 
+                mb:text-[20px] mb:leading-[35px] md:text-[39px] md:leading-[75px]
+                lg:text-[45px] lg:leading-[75px] exl:text-[68px] exl:leading-[75px] 
+                "
+          >
+            СТРОЙ ЖИЗНЬ С КАЧЕСТВОМ
+          </h1>
+          <p className="text-[32px] text-[#6A6A6A] font-[400] leading-[40px] lg:hidden ">
+            Ведущая компания в Узбекистане по производству строительных
+            компонентов.
+          </p>
+        </div>
+      </div>
+      <div
+        id="GoTOCatalog"
+        className="flex w-full h-[450px] sm:h-fit justify-between"
+      >
+        <div className=" w-[30%] sm:w-full h-full flex flex-col gap-4 items-center justify-center">
+          <p className="leading-[120%] font-black text-center text-[53px] w-fit">
+            ЧТО ВЫ <wbr /> ИЩИТЕ?
+          </p>
+          <Link to={"/catalog"}>
+            <div className="flex py-[15px] w-fit text-base font-bold button px-[60px]">
+              КАТАЛОГ
+            </div>
+          </Link>
+        </div>
+        <div className="flex items-start gap-5 w-[60%] sm:w-full    py-5  h-full">
+          {goods.length > 0 ? (
+            <Swiper
+              style={
+                {
+                  // "--swiper-navigation-color": "red !important",
+                  // "--swiper-pagination-color": "#00000",
+                }
+              }
+              breakpoints={{
+                0: {
+                  slidesPerView: 1,
+                },
+                400: {
+                  slidesPerView: 1,
+                },
+                639: {
+                  slidesPerView: 1.5,
+                },
+                950: {
+                  slidesPerView: 1.5,
+                },
+                1000: {
+                  slidesPerView: 2.5,
+                },
+                1250: {
+                  slidesPerView: 3,
+                },
+                1500: {
+                  slidesPerView: 3,
+                },
+                1700: {
+                  slidesPerView: 3,
+                },
+              }}
+              slidesPerView={2.9}
+              spaceBetween={30}
+              freeMode={true}
+              navigation={true}
+              modules={[FreeMode, Navigation, Pagination]}
+              className=" h-full  w-fit"
+            >
+              {goods.map((item, idx) => (
+                <SwiperSlide key={ idx}>
+                  {" "}
+                  <ProductCart Product={item} idx ={Math.floor(Math.random() * item.color.length)} />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          ) : null}
+        </div>
+      </div>
+      <div id="ProductsMain" className=" mt-10">
+        <h1>ПРОДУКЦИЯ ОXMETAL</h1>
+
+        <div className="ProductsCreate">
+          <div className="ProductsCreateSelects">
+            <div className="MainSelectsCreate">
+              <div className="MainSelects">
+                <div className="SelectsImg">
+                  <img
+                    className="SelectsImgBg"
+                    src="./icons/Star 7.svg"
+                    alt=""
+                  />
+                  <img
+                    className="SelectsImgIcon"
+                    src="./icons/free-icon-roof-63505241.svg"
+                    alt=""
+                  />
+                </div>
+                <p>КРОВЛЯ</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="ProductsCreateOptions">
+            <div className="ProductsCreateOptionsElem">
+              <img src="./icons/free-icon-roof-63505241.svg" alt="" />
+              <p>Крепеж</p>
+            </div>
+            <div className="ProductsCreateOptionsElem">
+              <img src="./icons/free-icon-roof-63505241.svg" alt="" />
+              <p>Крепеж</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="about_company">
+        <h1  className="logo_about">КАК МЫ РАБОТАЕМ</h1>
+
+        <div className="about_company_numbers ">
+          <div className="numbers" id="numbers1">
+            <span id="chislo1">
+            1500
+            </span>
+            <p className="a">
+              Отгруженных <br />
+              товаров
+            </p>
+          </div>
+          <div className="border border1"></div>
+          <div className="numbers" id="numbers2">
+            <span id="chislo2">27147</span>
+            <p className="a">
+              Квадратных <br />
+              метров
+            </p>
+          </div>
+          <div className="border border2"></div>
+
+          <div className="numbers" id="numbers3">
+            <span id="chislo3">50</span>
+            <p className="a">Контрагентов</p>
+          </div>
+          <div className="border border3"></div>
+
+          <div className="numbers" id="numbers4">
+            <span id="chislo4">20</span>
+            <p className="a">
+              Крупных компаний <br />
+              поставщиков
+            </p>
+          </div>
+        </div>
+        <div className="about_company_pros">
+          <div className="about_company_pros_top">
+            <div
+              className="pros_item"
+              data-aos="fade-down"
+              data-aos-duration="1000"
+            >
+              <img src="./img/aboutImg2.svg" width="73px" alt="" />
+              <h1>Быстрая доставка</h1>
+              <p>
+                В крупных городах работают филиалы компании. Некоторые заказы
+                можно забрать напрямую со склада или мы доставим на терминал ТК.
+              </p>
+            </div>
+            <div
+              className="pros_item"
+              data-aos="fade-down"
+              data-aos-duration="1000"
+            >
+              <img src="./img/aboutImg1.svg" width="73px" alt="" />
+              <h1>Выгодное сотрудничество</h1>
+              <p>
+                Мы нацелены на долгое сотрудничество с клиентами и партнерами,
+                поэтому создаем максимально комфортные условия для совместной
+                работы.
+              </p>
+            </div>
+          </div>
+          <div className="about_company_pros_bottom">
+            <div
+              className="pros_item"
+              data-aos="fade-up"
+              data-aos-duration="1000"
+            >
+              <img src="./icons/aboutImg4.svg" width="73px" alt="" />
+              <h1>Индивидуальная цена</h1>
+              <p>
+                Снизим цену специально для Вас! Мы следим за ценами и удерживаем
+                конкурентные. Для постоянных партнеров присутствует скидка на
+                дальнейшие заказы.
+              </p>
+            </div>
+            <div
+              className="pros_item"
+              data-aos="fade-up"
+              data-aos-duration="1000"
+            >
+              <img src="./img/aboutImg3.svg" width="73px" alt="" />
+              <h1>Высокое качество</h1>
+              <p>
+                Ведущая компания по решениям фасадных и кровельных систем.
+                Офицальная гарантия на каждую продукцую. По современным
+                Российским технологияи и ГОСТ-стандартам
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="AnyQuestionsOrderConsultation">
+        <div className="AnyQuestionsMain">
+          <div className="AnyQuestions">
+            <h1 className="AnyQuestionsLogo">Остались вопросы?</h1>
+          </div>
+          <div id="AnyQuestionsSelect">
+            <div className="acor-container">
+              <input type="checkbox" name="chacor" id="chacor1" />
+              <label htmlFor="chacor1">
+                Как вы подсчитываете стоимость конструкции?
+              </label>
+              <div className="acor-body">
+                <p>
+                  У нас есть два способа подсчета стоимости конструкции.
+                  <br />
+                  <br />
+                  Во-первых, у нас есть каталог, в котором представлены наши
+                  товары с указанием цен. Вы можете ознакомиться с каталогом и
+                  выбрать необходимые материалы, а затем умножить их стоимость
+                  на нужное количество.
+                  <br />
+                  <br />
+                  Во-вторых, на нашем сайте доступен калькулятор цен, который
+                  позволяет вам самостоятельно рассчитать стоимость товара. Вы
+                  можете выбрать нужные параметры и указать необходимые размеры
+                  или количество, и калькулятор автоматически вычислит общую
+                  стоимость конструкции на основе текущих цен.
+                </p>
+              </div>
+
+              <input type="checkbox" name="chacor" id="chacor2" />
+              <label htmlFor="chacor2">
+                Могу ли я заказать индивидуальные товары с выбором толщины
+                материала и цены?
+              </label>
+              <div className="acor-body">
+                <p>
+                  Да, у нас есть возможность заказать индивидуальные товары по
+                  вашим требованиям. Мы предлагаем широкий выбор материалов с
+                  разной толщиной, и вы можете выбрать наиболее подходящую для
+                  ваших потребностей.
+                  <br />
+                  <br />
+                  Кроме того, вы также можете указать желаемую цену для этих
+                  индивидуальных товаров. Наша команда свяжется с вами для
+                  обсуждения подробностей и предоставит вам точную информацию о
+                  возможностях и ценах для вашего заказа.
+                </p>
+              </div>
+              {/* 
+                <!-- <input type="checkbox" name="chacor" id="chacor3" />
+              <label for="chacor3">Rock</label>
+              <div class="acor-body">
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia nostrum qui consequuntur ullam quisquam error harum rerum, minus sunt nobis ut eveniet totam assumenda. Veritatis harum molestias laborum eligendi repellat?</p>
+              </div> --> */}
+
+              {/* <!-- <img src="./icons/134224_add_plus_new_icon.svg" alt="" srcset=""> --> */}
+              <input type="checkbox" name="chacor" id="chacor4" />
+              <label className="" htmlFor="chacor4">
+                Как с нами связаться?
+              </label>
+              <div className="acor-body">
+                <p>
+                  Наша компания, специализирующаяся на тонколистовой отрасли,
+                  предлагает бесплатную консультацию для всех клиентов. <br />
+                  <br />
+                  Обратившись к нам, вы получите профессиональные рекомендации и
+                  советы по выбору и использованию металлпрофиля для ваших
+                  проектов.
+                  <br />
+                  <br />
+                  Не упустите возможность получить бесплатную консультацию от
+                  опытных экспертов в области металлпрофиля и достигните успеха
+                  в ваших строительных задачах.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="OrderConsultationMain">
+          <div className="OrderConsultation">
+            <h1 className="OrderConsultationLogo">Заказать консультацию</h1>
+          </div>
+
+          <div className="OrderConsultationForm">
+            <form action="">
+              <label className="inputs">
+                <input
+                  className="ConsultationInpName"
+                  type="text"
+                  name="Name"
+                  placeholder="Ваше имя"
+                />
+
+                <div className="inp">
+                  <input
+                    className="ConsultationInpPhone"
+                    type="text"
+                    name="Number"
+                  />
+                </div>
+              </label>
+
+              <label className="FormBtn">
+                <button id="ConsultationSubmit">ОТПРАВИТЬ</button>
+                <span>
+                  Нажимая кнопку «Отправить», я даю своё согласие на обработку и
+                  распространение персональных данных.
+                </span>
+              </label>
+            </form>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default Home;
