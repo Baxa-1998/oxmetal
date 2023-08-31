@@ -10,7 +10,7 @@
 .catalog_page .catalog_page_mask {
   width: 100%;
   height: 341px;
-  background-image: url(../img/MaskCtalogPage.jpg);
+  background-image: url(/MaskCtalogPage.jpg);
   background-position: center;
   background-size: 100%;
   background-repeat: no-repeat;
@@ -161,7 +161,7 @@
   all: unset;
   cursor: pointer;
   display: block;
-  background-image: url(../icons/Star5.png);
+  background-image: url(/icons/Star5.png);
   background-size: cover;
   background-position: center;
   text-align: center;
@@ -206,7 +206,7 @@
 .but {
   width: 22px;
   height: 25px;
-  background-image: url(../icons/border_radio.svg);
+  background-image: url(/icons/border_radio.svg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100%;
@@ -223,7 +223,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-image: url(../icons/button_true.svg);
+  background-image: url(/icons/button_true.svg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100%;
@@ -239,7 +239,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-image: url(../icons/button_true.svg);
+  background-image: url(/icons/button_true.svg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100%;
@@ -253,7 +253,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-image: url(../icons/button_true.svg);
+  background-image: url(/icons/button_true.svg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100%;
@@ -284,7 +284,7 @@
     opacity: 1;
     width: 20px;
     height: 16px;
-    background-image: url(../icons/arrow.svg);
+    background-image: url(/icons/arrow.svg);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
