@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import SwiperCore from "swiper";
@@ -13,6 +13,7 @@ import "swiper/css/pagination";
 import "./styles.css";
 
 import { FreeMode, Navigation, Thumbs, Pagination } from "swiper/modules";
+import { Modal } from "../contexts/Modal";
 
 SwiperCore.use([Pagination]);
 
@@ -25,6 +26,7 @@ const ProductPage = () => {
   const [RAl, setRAl] = useState("");
   const [Coating, setCoating] = useState([]);
   const [Sizes, setSizes] = useState([]);
+  const { OpenModal, setOpenModal } = useContext(Modal);
   const {
     material,
     tipes,
@@ -242,7 +244,9 @@ const ProductPage = () => {
                 </div>
                 <div className=" border-t border-black border-solid mt-5"></div>
               </div>
-              <button className="consultation">
+              <button onClick={() =>{
+                setOpenModal(true)
+              }} className="consultation">
               <img src="/icons/phone.svg" alt="" />
               <p>КОНСУЛЬТАЦИЯ</p>
             </button>
