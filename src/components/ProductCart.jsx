@@ -1,22 +1,50 @@
 /* eslint-disable react/prop-types */
 // eslint-disable-next-line no-unused-vars
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { Modal } from "../contexts/Modal";
 
-const ProductCart = ({ Product , idx }) => {
+const ProductCart = ({ Product, idx }) => {
   // eslint-disable-next-line react/prop-types
+  const { setOpenModal } = useContext(Modal);
 
-  
-  const { material, view, Guarantee, price, color, tipes, coating, sizes  , key } =
-    Product;
+  const {
+    material,
+    view,
+    Guarantee,
+    price,
+    color,
+    tipes,
+    coating,
+    sizes,
+    key,
+  } = Product;
 
-console.log(idx);
- 
+
   return (
     <div className="Goods_item ">
-      <img className="ProductImgW" src={color[idx == undefined || idx == -1 ?Math.floor(Math.random() * color.length) : idx].src} />
+      <img
+        className="ProductImgW"
+        src={
+          color[
+            idx == undefined || idx == -1
+              ? Math.floor(Math.random() * color.length)
+              : idx
+          ].src
+        }
+      />
       <h1>
-        {material} {tipes} ({coating}-<span>{color[idx == undefined || idx == -1  ?Math.floor(Math.random() * color.length) : idx].name}</span>-{sizes})
+        {material} {tipes} ({coating}-
+        <span>
+          {
+            color[
+              idx == undefined || idx == -1
+                ? Math.floor(Math.random() * color.length)
+                : idx
+            ].name
+          }
+        </span>
+        -{sizes})
       </h1>
       <p>
         Материал: <span>{material}</span>
@@ -30,7 +58,8 @@ console.log(idx);
       <p>
         Цена:
         <span className="BoldPrice ml-1">
-          {price === 0 ? "Цена по запросу" :price.toLocaleString("ru-RU")} сум/м<sup>2</sup>
+          {price === 0 ? "Цена по запросу" : price.toLocaleString("ru-RU")}{" "}
+          сум/м<sup>2</sup>
         </span>
       </p>
       <div className="Optins">
@@ -39,7 +68,12 @@ console.log(idx);
             ПОДРОБНЕЕ
           </button>
         </Link>
-        <img src="./phone.svg" />
+        <img
+          onClick={() => {
+            setOpenModal(true);
+          }}
+          src="./phone.svg"
+        />
       </div>
     </div>
   );

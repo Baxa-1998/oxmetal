@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ProductCart from "../components/ProductCart";
 import { useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -9,11 +9,52 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { FreeMode, Pagination, Navigation } from "swiper/modules";
 import { Link } from "react-router-dom";
+import { Modal } from "../contexts/Modal";
 const Home = () => {
   const goods = useSelector((state) => state.goods.data);
+  const {OpenModal , setOpenModal} = useContext(Modal)
+  const [SelectArr, setSelectArr] = useState([]);
+  const [SelectIdx, setSelectIdx] = useState(0);
+  useEffect(() => {
+    let View = [];
+    function create_category(arr, key, new_arr) {
+      for (let item of arr) {
+        new_arr.push(item[key]);
+      }
+    }
+    create_category(goods, "view", View);
+    View = [...new Set(View)];
+    let ProductsArr = [];
 
+    function getSelects() {
+      for (let view of View) {
+        let fillSelectMater = goods.filter(
+          (item) => item.view.toLowerCase() === view.toLowerCase()
+        );
+        let materObj = [];
+        for (let mater of fillSelectMater) {
+          materObj.push({
+            icon: mater.materialImg,
+            name: mater.material,
+          });
+        }
+        const table = {};
+        const res = materObj.filter(
+          ({ name }) => !table[name] && (table[name] = 1)
+        );
+        ProductsArr.push({
+          type: view,
+          img: fillSelectMater[0].viewImg,
+          arr: res,
+        });
+      }
+      ProductsArr = [...new Set(ProductsArr)];
+      console.log(ProductsArr);
+      setSelectArr(ProductsArr);
+    }
 
-
+    getSelects();
+  }, [goods]);
   return (
     <>
       <div className="  flex justify-between items-center ">
@@ -46,7 +87,7 @@ const Home = () => {
         className="flex w-full h-[450px] sm:h-fit justify-between"
       >
         <div className=" w-[30%] sm:w-full h-full flex flex-col gap-4 items-center justify-center">
-          <p className="leading-[120%] font-black text-center text-[53px] w-fit">
+          <p className="leading-[120%] lg:text-2xl font-black text-center text-[53px] w-fit">
             ЧТО ВЫ <wbr /> ИЩИТЕ?
           </p>
           <Link to={"/catalog"}>
@@ -98,9 +139,12 @@ const Home = () => {
               className=" h-full  w-fit"
             >
               {goods.map((item, idx) => (
-                <SwiperSlide key={ idx}>
+                <SwiperSlide key={idx}>
                   {" "}
-                  <ProductCart Product={item} idx ={Math.floor(Math.random() * item.color.length)} />
+                  <ProductCart
+                    Product={item}
+                    idx={Math.floor(Math.random() * item.color.length)}
+                  />
                 </SwiperSlide>
               ))}
             </Swiper>
@@ -113,45 +157,66 @@ const Home = () => {
         <div className="ProductsCreate">
           <div className="ProductsCreateSelects">
             <div className="MainSelectsCreate">
-              <div className="MainSelects">
-                <div className="SelectsImg">
-                  <img
-                    className="SelectsImgBg"
-                    src="./icons/Star 7.svg"
-                    alt=""
-                  />
-                  <img
-                    className="SelectsImgIcon"
-                    src="./icons/free-icon-roof-63505241.svg"
-                    alt=""
-                  />
-                </div>
-                <p>КРОВЛЯ</p>
-              </div>
+              {SelectArr.length > 0
+                ? SelectArr.map((item, idx) => (
+                    <div
+                      className="MainSelects"
+                      onClick={() => {
+                        setSelectIdx(idx);
+                      }}
+                      key={item.type + idx}
+                    >
+                      <div className="SelectsImg">
+                        <img
+                          className={
+                            SelectIdx == idx
+                              ? "SelectsImgBg SelectsImgBgActive "
+                              : "SelectsImgBg "
+                          }
+                          src="/icons/Star 7.svg"
+                          alt=""
+                        />
+                        <img className="SelectsImgIcon" src={item.img} alt="" />
+                      </div>
+                      <p>{item.type}</p>
+                    </div>
+                  ))
+                : null}
             </div>
           </div>
 
           <div className="ProductsCreateOptions">
-            <div className="ProductsCreateOptionsElem">
+            {SelectArr.length > 0
+              ? SelectArr[SelectIdx].arr.map((item, idx) => (
+                  <Link
+                    to={"/catalog"}
+                    onClick={() => {
+                      localStorage.setItem("fillGood", item.name);
+                    }}
+                    key={item.name + idx}
+                  >
+                    <div className="ProductsCreateOptionsElem ">
+                      <img src={item.icon} alt="" />
+                      <p>{item.name}</p>
+                    </div>
+                  </Link>
+                ))
+              : null}
+
+            {/* <div className="ProductsCreateOptionsElem">
               <img src="./icons/free-icon-roof-63505241.svg" alt="" />
               <p>Крепеж</p>
-            </div>
-            <div className="ProductsCreateOptionsElem">
-              <img src="./icons/free-icon-roof-63505241.svg" alt="" />
-              <p>Крепеж</p>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
 
       <div id="about_company">
-        <h1  className="logo_about">КАК МЫ РАБОТАЕМ</h1>
+        <h1 className="logo_about">КАК МЫ РАБОТАЕМ</h1>
 
         <div className="about_company_numbers ">
           <div className="numbers" id="numbers1">
-            <span id="chislo1">
-            1500
-            </span>
+            <span id="chislo1">1500</span>
             <p className="a">
               Отгруженных <br />
               товаров

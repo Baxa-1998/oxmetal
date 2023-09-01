@@ -100,16 +100,16 @@ const ProductPage = () => {
     <div className=" bg-[#F2F2F2] px-[5%]">
       {Prodict.length > 0 ? (
         <>
-          <h1 className=" text-4xl font-bold ">{material}</h1>
+          <h1 className="lg:text-2xl text-4xl font-bold ">{material}</h1>
           <p>
             <Link to={"/catalog"}>Каталог</Link> /{" "}
             <Link to={"/catalog"}>Каталог</Link>
           </p>
-          <h1 className="text-4xl font-bold mt-5">
+          <h1 className="text-4xl font-bold mt-5 lg:text-2xl">
             {material} {tipes} ({coating}-<span>{color.length === 1 ? color[0].RGBA : RAl}</span>-{sizes})
           </h1>
-          <div className="flex gap-8 mt-5">
-            <div className="w-1/2">
+          <div className="flex gap-8 mt-5 relative lg:flex-col ">
+            <div className="w-1/2 lg:w-full h-fit sticky lg:static top-[100px]  left-0">
               <div className="">
                 <Swiper
                   style={{
@@ -139,7 +139,7 @@ const ProductPage = () => {
                   freeMode={true}
                   watchSlidesProgress={true}
                   modules={[FreeMode, Navigation, Thumbs]}
-                  className="mySwiper max-h-[500px]"
+                  className="mySwiper max-h-[500px] "
                 >
                   {color.map((item, idx) => (
                     <SwiperSlide key={idx}>
@@ -157,7 +157,7 @@ const ProductPage = () => {
                 </p>
               </div>
             </div>
-            <div className="w-1/2">
+            <div className="w-1/2 lg:w-full">
               <h1 className=" text-3xl font-bold">Характеристики:</h1>
               <div className=" text-xl font-bold mt-5">
                 <p>

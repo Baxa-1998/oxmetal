@@ -39,7 +39,16 @@ const Catalog = () => {
   // console.log(uniqueTypes);
   // console.log(uniqueMaterials);
   useEffect(() => {
-    setFillGoods([...goods]);
+    if(localStorage.getItem("fillGood")){
+      setFillGoods([...goods.filter(i => i.material == localStorage.getItem("fillGood"))]);
+      setTimeout(()=>{
+        localStorage.clear()
+      } , 3000)
+    }else{
+      setFillGoods([...goods]);
+    }
+
+  
   }, [goods]);
   useEffect(() => {
     if (
@@ -183,23 +192,30 @@ const Catalog = () => {
           </div>
           <div className="mx-auto">
             <div className="FilterConteiner">
-              {FillGoods.length > 0
-                ? FillGoods.slice(0, Count).map((item, idx) => (
-                    <ProductCart
-                      key={idx}
-                      Product={item}
-                      idx={
-                        ActiveColors.length === 0
-                          ? Math.floor(Math.random() * item.color.length)
-                          : item.color.indexOf(
-                              item.color.filter(
-                                (item) => item.name === ActiveColors.toString()
-                              )[0]
-                            )
-                      }
-                    />
-                  ))
-                : null}
+              {FillGoods.length > 0 ? (
+                FillGoods.slice(0, Count).map((item, idx) => (
+                  <ProductCart
+                    key={idx}
+                    Product={item}
+                    idx={
+                      ActiveColors.length === 0
+                        ? Math.floor(Math.random() * item.color.length)
+                        : item.color.indexOf(
+                            item.color.filter(
+                              (item) => item.name === ActiveColors.toString()
+                            )[0]
+                          )
+                    }
+                  />
+                ))
+              ) : (
+                <>
+                  <img
+                    src="https://us.123rf.com/450wm/petersnow/petersnow1911/petersnow191100017/134503210-illustration-for-404-error-vector-webpage-template-concept-for-page-not-found-problem-creative.jpg?ver=6"
+                    alt=""
+                  />
+                </>
+              )}
             </div>
 
             {FillGoods.length >= Count ? (
