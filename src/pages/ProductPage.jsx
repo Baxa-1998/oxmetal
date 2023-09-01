@@ -97,7 +97,7 @@ const ProductPage = () => {
     setRAl(activeSlideObj.RGBA);
   };
   return (
-    <div className=" bg-[#F2F2F2] px-[5%]">
+    <div className=" bg-[#F2F2F2] pt-[100px] px-[5%]">
       {Prodict.length > 0 ? (
         <>
           <h1 className="lg:text-2xl text-4xl font-bold ">{material}</h1>
@@ -108,7 +108,7 @@ const ProductPage = () => {
           <h1 className="text-4xl font-bold mt-5 lg:text-2xl">
             {material} {tipes} ({coating}-<span>{color.length === 1 ? color[0].RGBA : RAl}</span>-{sizes})
           </h1>
-          <div className="flex gap-8 mt-5 relative lg:flex-col ">
+          <div className="flex gap-8 mt-5 relative lg:flex-col pb-10">
             <div className="w-1/2 lg:w-full h-fit sticky lg:static top-[100px]  left-0">
               <div className="">
                 <Swiper
@@ -121,13 +121,13 @@ const ProductPage = () => {
                   thumbs={thumbsSwiper ? { swiper: thumbsSwiper } : undefined}
                   modules={[FreeMode, Navigation, Thumbs]}
                   pagination={pagination}
-                  className="mySwiper2 max-h-[500px]"
+                  className="mySwiper2 exl:max-h-[500px]"
                   onSlideChange={handleSlideChange}
                   onSwiper={handleItemClick}
                 >
                   {color.map((item, idx) => (
-                    <SwiperSlide key={idx}>
-                      <img src={item.src} />
+                    <SwiperSlide key={idx} className="h-full">
+                      <img src={item.src} className=" object-cover" />
                     </SwiperSlide>
                   ))}
                 </Swiper>
@@ -242,6 +242,10 @@ const ProductPage = () => {
                 </div>
                 <div className=" border-t border-black border-solid mt-5"></div>
               </div>
+              <button className="consultation">
+              <img src="/icons/phone.svg" alt="" />
+              <p>КОНСУЛЬТАЦИЯ</p>
+            </button>
             </div>
           </div>
         </>

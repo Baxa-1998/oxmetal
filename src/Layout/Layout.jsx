@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getGoodAPI } from "../features/goods/thunk";
 import { useEffect, useState } from "react";
 import { Modal } from "../contexts/Modal";
+import PhoneInput from "react-phone-input-2";
+import Footer from "../components/Footer";
 
 const Layout = () => {
   const goods = useSelector((state) => state.goods.data);
@@ -14,19 +16,23 @@ const Layout = () => {
       dispatch(getGoodAPI());
     }
   }, [dispatch, goods]);
-
+  useEffect(() => {
+    OpenModal
+      ? document.body.style.overflow = "hidden"
+      : document.body.style.overflow = "visible";
+  }, [OpenModal]);
   return (
     <>
-      <Modal.Provider value={{setOpenModal , OpenModal}}>
+      <Modal.Provider value={{ setOpenModal, OpenModal }}>
         {OpenModal ? (
           <>
             <div className="ConsultationModalWindow">
               <img
-                src="./icons/close.png"
+                src="/icons/close.png"
                 className="CloseModalWindow"
                 id="CloseWindow"
-                onClick={()=>{
-                  setOpenModal(false)
+                onClick={() => {
+                  setOpenModal(false);
                 }}
                 alt=""
               />
@@ -45,10 +51,11 @@ const Layout = () => {
                       placeholder="Ваше имя"
                     />
                     <div className="ModalCons">
-                      <input
+                      <PhoneInput
                         className="ConsultationInpPhoneModal"
-                        type="text"
-                        name="Number"
+                        country={"uz"} // Укажите страну по умолчанию (например, 'us' для США)
+                        value={""}
+                        // onChange={}handleOnChange
                       />
                     </div>
                   </label>
@@ -63,17 +70,21 @@ const Layout = () => {
                 </form>
               </div>
             </div>
-            <div onClick={()=>{
-              setOpenModal(false)
-            }} className="modal_bg" id="CloseWindow"></div>
+            <div
+              onClick={() => {
+                setOpenModal(false);
+              }}
+              className="modal_bg"
+              id="CloseWindow"
+            ></div>
           </>
         ) : null}
 
         <Header />
-        <main className="max-w-[2560px] pt-[100px] mx-auto">
+        <main className="max-w-[2560px]  mx-auto">
           <Outlet />
         </main>
-        <h1>footer</h1>
+        <Footer />
       </Modal.Provider>
     </>
   );

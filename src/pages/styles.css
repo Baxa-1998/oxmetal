@@ -54,20 +54,20 @@
 }
 .swiper-button-next::after {
   background-image: url(/next.svg);
-  background-size: 100% 100%;
-  background-position: left;
+  background-size: 200% 200%;
+  background-position: center;
   color: transparent;
   background-repeat: no-repeat;
-  width: 100px;
+  width: 200px;
 }
 .swiper-button-prev::after {
   color: transparent;
   background-image: url(/prev.svg);
-  background-size: 100% 100%;
-  background-position: left;
+  background-size: 200% 200%;
+  background-position: center;
   color: transparent;
   background-repeat: no-repeat;
-  width: 100px;
+  width: 200px;
 }
 .mySwiper .swiper-slide {
   width: 25%;

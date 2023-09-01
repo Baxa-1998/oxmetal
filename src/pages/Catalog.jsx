@@ -92,7 +92,7 @@ const Catalog = () => {
     };
   });
   return (
-    <div className="catalog_page">
+    <div className="catalog_page pt-[50px] ">
       <div className="catalog_page_mask Anchor">
         <h1>Каталог товаров</h1>
       </div>
@@ -103,7 +103,7 @@ const Catalog = () => {
             <div className="FilterModal">
               <img
                 className="CloseFilterModal"
-                src="./icons/close.png"
+                src="/icons/close.png"
                 alt=""
               />
               <div className="acor_catalog-container">
@@ -174,7 +174,7 @@ const Catalog = () => {
             </div>
             <div className="FilterOptions">
               <div className="openFilter">
-                <img src="./icons/filter.png" width="38px" alt="" />
+                <img src="/icons/filter.png" width="38px" alt="" />
                 <span>Фильтр</span>
               </div>
               <p

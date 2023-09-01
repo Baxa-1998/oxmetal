@@ -193,6 +193,62 @@
   background-size: cover;
 }
 
+
+#main_page_preview {
+  width: 100%;
+  height: 750px;
+  display: flex;
+  align-items: center;
+  gap: 44px;
+}
+
+ #main_page_preview .prewiew_left_side {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+}
+
+ #main_page_preview .prewiew_left_side .main_page_logo {
+  width: 244px;
+  margin-top: 20%;
+}
+
+ #main_page_preview .prewiew_left_side .construction {
+  display: block;
+}
+
+ #main_page_preview .prewiew_left_side h1 {
+  font-family: "Steppe";
+  font-size: 68px;
+  font-weight: 900;
+  line-height: 75px;
+  color: #1E1E1E;
+  margin-top: 30px;
+}
+
+ #main_page_preview .prewiew_left_side p {
+  font-family: "Inter";
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 40px;
+  letter-spacing: 0em;
+  color: #6A6A6A;
+}
+
+ #main_page_preview .prewiew_mask {
+  min-width: 580px;
+  max-width: 720px;
+  width: 50%;
+  height: 100%;
+  background-image: url(/icons/Mask_img.png);
+  background-position: center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+
 .ralColor {
   position: absolute;
   bottom: -50px;
@@ -759,6 +815,10 @@ main_page_container #ProductsMain {
   text-align: center;
   width: 190px;
   position: relative;
+  outline: transparent;
+}
+.form-control{
+outline: none;
 }
 #AnyQuestionsOrderConsultation
   .OrderConsultationMain
@@ -766,32 +826,11 @@ main_page_container #ProductsMain {
   .inp {
   position: relative;
 }
-#AnyQuestionsOrderConsultation
-  .OrderConsultationMain
-  .OrderConsultationForm
-  .inp::after {
-  content: "+";
-  position: absolute;
-  font-size: 20px;
-  bottom: 50%;
-  transform: translateY(-50%);
-  left: 35px;
-  width: 2px;
-  height: 10px;
-}
+
 .ConsultationModalWindow .OrderConsultationForm form .inputs .ModalCons {
   position: relative;
 }
-.ConsultationModalWindow .OrderConsultationForm form .inputs .ModalCons::after {
-  content: "+";
-  position: absolute;
-  font-size: 20px;
-  bottom: 50%;
-  transform: translateY(-50%);
-  left: 25px;
-  width: 2px;
-  height: 10px;
-}
+
 #AnyQuestionsOrderConsultation
   .OrderConsultationMain
   .OrderConsultationForm
@@ -2839,16 +2878,7 @@ main_page_container #ProductsMain {
 .ConsultationModalWindow .OrderConsultationForm form .inputs .ModalCons {
   position: relative;
 }
-.ConsultationModalWindow .OrderConsultationForm form .inputs .ModalCons::after {
-  content: "+";
-  position: absolute;
-  font-size: 20px;
-  bottom: 50%;
-  transform: translateY(-50%);
-  left: 25px;
-  width: 2px;
-  height: 10px;
-}
+
 
 .ConsultationModalWindow {
   width: 995px;
@@ -3009,7 +3039,7 @@ main_page_container #ProductsMain {
 }
 
 .ConsultationModalWindow .OrderConsultationForm .ConsultationInpPhoneModal {
-  all: unset;
+  // all: unset;
   border-bottom: 1px solid #1e1e1e;
   padding: 13px 20px;
   text-align: center;
@@ -3147,5 +3177,113 @@ main_page_container #ProductsMain {
 @media only screen and (max-width: 320px) {
   .ConsultationModalWindow {
     padding: 32px 10px;
+  }
+}
+
+
+footer {
+  width: 100%;
+  /* max-width: 2560px; */
+  padding: 54px 120px 96px 120px;
+  height: -moz-fit-content;
+  height: fit-content;
+  background-color: white;
+  margin: 0 auto;
+}
+
+footer ul {
+  display: flex;
+  justify-content: space-between;
+}
+
+footer ul li {
+  all: unset;
+}
+
+footer ul li h1 {
+  margin-bottom: 25px;
+  font-family: "Inter";
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 29px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.footerLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+  font-family: "Inter";
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14px;
+  letter-spacing: 0em;
+}
+
+.footerLinks a {
+  color: black;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footerLinks a img {
+  width: 24px;
+}
+.special-label{
+  display: none;
+}
+
+@media only screen and (max-width: 768px) {
+  footer {
+    width: 100%;
+    padding: 54px 50px 96px 50px;
+    height: fit-content;
+    background-color: #fff;
+}
+footer ul {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-row-gap: 30px;
+}
+}
+@media only screen and (max-width: 476px) {
+  footer ul {
+    grid-template-columns: repeat(1, 1fr);
+}
+}
+.consultation {
+  all: unset;
+  cursor: pointer;
+  display: flex;
+  background-image: url(/icons/Star5.png);
+  background-size: 100%;
+  background-position: center;
+  text-align: center;
+  align-items: center;
+  width: 253px;
+  height: 60px;
+  background-repeat: no-repeat;
+  justify-content: center;
+  margin-top: 50px;
+}
+.consultation p {
+  font-family: "Inter";
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 18px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+.consultation img {
+  width: 50px;
+}
+@media only screen and (max-width: 673px){
+
+  .products_page .products_details .details .consultation {
+    width: 100%;
+    margin-top: 15px;
   }
 }

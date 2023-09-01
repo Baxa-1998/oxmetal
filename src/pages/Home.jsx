@@ -10,9 +10,11 @@ import "swiper/css/navigation";
 import { FreeMode, Pagination, Navigation } from "swiper/modules";
 import { Link } from "react-router-dom";
 import { Modal } from "../contexts/Modal";
+import PhoneInput from "react-phone-input-2";
+
 const Home = () => {
   const goods = useSelector((state) => state.goods.data);
-  const {OpenModal , setOpenModal} = useContext(Modal)
+  const { OpenModal, setOpenModal } = useContext(Modal);
   const [SelectArr, setSelectArr] = useState([]);
   const [SelectIdx, setSelectIdx] = useState(0);
   useEffect(() => {
@@ -82,6 +84,22 @@ const Home = () => {
           </p>
         </div>
       </div>
+         {/* <div id="main_page_preview" >
+          <div className="prewiew_mask"></div>
+          <div className="prewiew_left_side">
+            <img
+              src="/icons/main_Page_logo.png"
+              className="main_page_logo"
+              alt=""
+            />
+            <h1>СТРОЙ ЖИЗНЬ С КАЧЕСТВОМ</h1>
+
+            <p>
+              Ведущая компания в Узбекистане по производству строительных
+              компонентов.
+            </p>
+          </div>
+        </div> */}
       <div
         id="GoTOCatalog"
         className="flex w-full h-[450px] sm:h-fit justify-between"
@@ -129,6 +147,12 @@ const Home = () => {
                 },
                 1700: {
                   slidesPerView: 3,
+                },
+                2000: {
+                  slidesPerView: 4,
+                },
+                2500: {
+                  slidesPerView: 4.5,
                 },
               }}
               slidesPerView={2.9}
@@ -204,7 +228,7 @@ const Home = () => {
               : null}
 
             {/* <div className="ProductsCreateOptionsElem">
-              <img src="./icons/free-icon-roof-63505241.svg" alt="" />
+              <img src="/icons/free-icon-roof-63505241.svg" alt="" />
               <p>Крепеж</p>
             </div> */}
           </div>
@@ -280,7 +304,7 @@ const Home = () => {
               data-aos="fade-up"
               data-aos-duration="1000"
             >
-              <img src="./icons/aboutImg4.svg" width="73px" alt="" />
+              <img src="/icons/aboutImg4.svg" width="73px" alt="" />
               <h1>Индивидуальная цена</h1>
               <p>
                 Снизим цену специально для Вас! Мы следим за ценами и удерживаем
@@ -361,7 +385,7 @@ const Home = () => {
                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia nostrum qui consequuntur ullam quisquam error harum rerum, minus sunt nobis ut eveniet totam assumenda. Veritatis harum molestias laborum eligendi repellat?</p>
               </div> --> */}
 
-              {/* <!-- <img src="./icons/134224_add_plus_new_icon.svg" alt="" srcset=""> --> */}
+              {/* <!-- <img src="/icons/134224_add_plus_new_icon.svg" alt="" srcset=""> --> */}
               <input type="checkbox" name="chacor" id="chacor4" />
               <label className="" htmlFor="chacor4">
                 Как с нами связаться?
@@ -401,10 +425,16 @@ const Home = () => {
                 />
 
                 <div className="inp">
-                  <input
+                  {/* <input
                     className="ConsultationInpPhone"
                     type="text"
                     name="Number"
+                  /> */}
+                  <PhoneInput
+                    className="ConsultationInpPhone"
+                    country={"uz"} // Укажите страну по умолчанию (например, 'us' для США)
+                    value={""}
+                    // onChange={}handleOnChange
                   />
                 </div>
               </label>
