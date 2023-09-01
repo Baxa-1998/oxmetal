@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useContext, useState } from "react";
-import { AiOutlineClose, AiOutlineMail, AiOutlineSearch } from "react-icons/Ai";
-import { AiOutlineMenu } from "react-icons/Ai";
+import { AiOutlineClose, AiOutlineMail, AiOutlineSearch } from "react-icons/ai";
+import { AiOutlineMenu } from "react-icons/ai";
 import { BsTelephone } from "react-icons/bs";
 import { FaMapMarkerAlt } from "react-icons/fa";
 
