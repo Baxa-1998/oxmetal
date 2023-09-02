@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import ProductCart from "../components/ProductCart";
 import { useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -11,12 +11,38 @@ import { FreeMode, Pagination, Navigation } from "swiper/modules";
 import { Link } from "react-router-dom";
 import { Modal } from "../contexts/Modal";
 import PhoneInput from "react-phone-input-2";
+import axios from "axios";
 
 const Home = () => {
   const goods = useSelector((state) => state.goods.data);
   const { OpenModal, setOpenModal } = useContext(Modal);
   const [SelectArr, setSelectArr] = useState([]);
   const [SelectIdx, setSelectIdx] = useState(0);
+  const [FormData, setFormData] = useState({});
+  const message = useRef(null);
+  const message2 = useRef(null);
+  function sendmessage(evt) {
+    evt.preventDefault();
+    let chat_id = "1217710274";
+    let token = "6285327436:AAFvZ-xAawvIVqzpk9nuWXaLbhMoWOeB7Fc";
+    let mes = message.current.value;
+    let mes2 = message2.current.state.formattedNumber;
+
+    axios
+      .get(
+        "https://api.telegram.org/bot" +
+          token +
+          "/sendMessage?text=" +
+          mes +
+          mes2 +
+          "&chat_id=" +
+          chat_id
+      )
+      .then((res) => {
+        message.current.value = "";
+        message2.current.state.formattedNumber = "";
+      });
+  }
   useEffect(() => {
     let View = [];
     function create_category(arr, key, new_arr) {
@@ -59,7 +85,7 @@ const Home = () => {
   }, [goods]);
   return (
     <>
-      <div className="  flex justify-between items-center ">
+      {/* <div className="  flex justify-between items-center ">
         <div className="w-[49%] ">
           <img src="/fonOxMetal.png" className="w-[100%]" alt="" />
         </div>
@@ -83,23 +109,23 @@ const Home = () => {
             компонентов.
           </p>
         </div>
-      </div>
-         {/* <div id="main_page_preview" >
-          <div className="prewiew_mask"></div>
-          <div className="prewiew_left_side">
-            <img
-              src="/icons/main_Page_logo.png"
-              className="main_page_logo"
-              alt=""
-            />
-            <h1>СТРОЙ ЖИЗНЬ С КАЧЕСТВОМ</h1>
+      </div> */}
+      <div id="main_page_preview">
+        <div className="prewiew_mask"></div>
+        <div className="prewiew_left_side">
+          <img
+            src="/icons/main_Page_logo.png"
+            className="main_page_logo"
+            alt=""
+          />
+          <h1>СТРОЙ ЖИЗНЬ С КАЧЕСТВОМ</h1>
 
-            <p>
-              Ведущая компания в Узбекистане по производству строительных
-              компонентов.
-            </p>
-          </div>
-        </div> */}
+          <p>
+            Ведущая компания в Узбекистане по поставкам кровельных и фасадных
+            систем.
+          </p>
+        </div>
+      </div>
       <div
         id="GoTOCatalog"
         className="flex w-full h-[450px] sm:h-fit justify-between"
@@ -415,9 +441,14 @@ const Home = () => {
           </div>
 
           <div className="OrderConsultationForm">
-            <form action="">
+            <form
+              onSubmit={(e) => {
+                sendmessage(e);
+              }}
+            >
               <label className="inputs">
                 <input
+                  ref={message}
                   className="ConsultationInpName"
                   type="text"
                   name="Name"
@@ -425,16 +456,11 @@ const Home = () => {
                 />
 
                 <div className="inp">
-                  {/* <input
-                    className="ConsultationInpPhone"
-                    type="text"
-                    name="Number"
-                  /> */}
                   <PhoneInput
+                    ref={message2}
                     className="ConsultationInpPhone"
                     country={"uz"} // Укажите страну по умолчанию (например, 'us' для США)
                     value={""}
-                    // onChange={}handleOnChange
                   />
                 </div>
               </label>

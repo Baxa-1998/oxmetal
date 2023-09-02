@@ -254,7 +254,7 @@ const ProductPage = () => {
           </div>
         </>
       ) : (
-        "Loading..."
+        null
       )}
     </div>
   );

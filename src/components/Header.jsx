@@ -71,7 +71,7 @@ const Header = () => {
         </nav>
       </header>
       {Burger ? (
-        <div className=" fixed h-full w-fit right-0 bg-white max-w-[320px] py-8 z-[9999]">
+        <div className=" hidden md:block fixed h-full w-fit right-0 bg-white max-w-[320px] py-8 z-[9999]">
           <AiOutlineClose
             onClick={() => {
               setBurger(!Burger);

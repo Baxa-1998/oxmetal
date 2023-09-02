@@ -211,6 +211,7 @@
  #main_page_preview .prewiew_left_side .main_page_logo {
   width: 244px;
   margin-top: 20%;
+  max-width: none;
 }
 
  #main_page_preview .prewiew_left_side .construction {
@@ -218,7 +219,7 @@
 }
 
  #main_page_preview .prewiew_left_side h1 {
-  font-family: "Steppe";
+  // font-family: "Steppe";
   font-size: 68px;
   font-weight: 900;
   line-height: 75px;
