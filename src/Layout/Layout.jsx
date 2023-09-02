@@ -8,6 +8,7 @@ import PhoneInput from "react-phone-input-2";
 import Footer from "../components/Footer";
 import axios from "axios";
 import Loading from "../components/Loading";
+import { sendmessage } from "../utils/sendTgBot";
 
 const Layout = () => {
   const goods = useSelector((state) => state.goods.data);
@@ -26,35 +27,12 @@ const Layout = () => {
   }, [OpenModal]);
   const message = useRef(null);
   const message2 = useRef(null);
-  function sendmessage(evt) {
-    evt.preventDefault();
-    let chat_id = "1217710274";
-    let token = "6285327436:AAFvZ-xAawvIVqzpk9nuWXaLbhMoWOeB7Fc";
-    let mes = message.current.value;
-    let mes2 = message2.current.state.formattedNumber;
 
-    axios
-      .get(
-        "https://api.telegram.org/bot" +
-          token +
-          "/sendMessage?text=" +
-          mes +
-          mes2 +
-          "&chat_id=" +
-          chat_id
-      )
-      .then((res) => {
-        message.current.value = "";
-        message2.current.state.formattedNumber = "";
-      });
-  }
-  useEffect(()=>{
+  useEffect(() => {});
 
-  })
-
-  if(Load === "loading" ){
-    return <Loading/>
-  }else if(Load === "fulfilled"){
+  if (Load === "loading") {
+    return <Loading />;
+  } else if (Load === "fulfilled") {
     return (
       <>
         <Modal.Provider value={{ setOpenModal, OpenModal }}>
@@ -76,7 +54,13 @@ const Layout = () => {
                   2х рабочих дней
                 </p>
                 <div className="OrderConsultationForm">
-                  <form action="">
+                  <form
+                    onSubmit={(e) => {
+                      sendmessage(e , message , 
+                        message2);
+                    }}
+                    action=""
+                  >
                     <label className="inputs">
                       <input
                         ref={message}
@@ -94,7 +78,7 @@ const Layout = () => {
                         />
                       </div>
                     </label>
-  
+
                     <label className="FormBtn">
                       <button id="ConsultationSubmit">ОТПРАВИТЬ</button>
                       <span>
@@ -114,7 +98,7 @@ const Layout = () => {
               ></div>
             </>
           ) : null}
-  
+
           <Header />
           <main className="max-w-[2560px]  mx-auto">
             <Outlet />
@@ -124,7 +108,6 @@ const Layout = () => {
       </>
     );
   }
-
 };
 
 export default Layout;

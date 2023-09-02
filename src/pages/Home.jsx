@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 import { Modal } from "../contexts/Modal";
 import PhoneInput from "react-phone-input-2";
 import axios from "axios";
+import { sendmessage } from "../utils/sendTgBot";
 
 const Home = () => {
   const goods = useSelector((state) => state.goods.data);
@@ -21,28 +22,7 @@ const Home = () => {
   const [FormData, setFormData] = useState({});
   const message = useRef(null);
   const message2 = useRef(null);
-  function sendmessage(evt) {
-    evt.preventDefault();
-    let chat_id = "1217710274";
-    let token = "6285327436:AAFvZ-xAawvIVqzpk9nuWXaLbhMoWOeB7Fc";
-    let mes = message.current.value;
-    let mes2 = message2.current.state.formattedNumber;
 
-    axios
-      .get(
-        "https://api.telegram.org/bot" +
-          token +
-          "/sendMessage?text=" +
-          mes +
-          mes2 +
-          "&chat_id=" +
-          chat_id
-      )
-      .then((res) => {
-        message.current.value = "";
-        message2.current.state.formattedNumber = "";
-      });
-  }
   useEffect(() => {
     let View = [];
     function create_category(arr, key, new_arr) {
@@ -443,7 +423,7 @@ const Home = () => {
           <div className="OrderConsultationForm">
             <form
               onSubmit={(e) => {
-                sendmessage(e);
+                sendmessage(e, message, message2);
               }}
             >
               <label className="inputs">
