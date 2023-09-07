@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useContext, useState } from "react";
-import { AiOutlineClose, AiOutlineMail, AiOutlineSearch } from "react-icons/ai";
-import { AiOutlineMenu } from "react-icons/ai";
+import { AiOutlineClose, AiOutlineMail, AiOutlineSearch, AiOutlineMenu } from "react-icons/ai";
+// import { AiOutlineMenu } from "react-icons/ai";
 import { BsTelephone } from "react-icons/bs";
 import { FaMapMarkerAlt } from "react-icons/fa";
 
@@ -21,14 +21,18 @@ const Header = () => {
                 <img src="/logo.svg" alt="" />
               </Link>
             </li>
-            {/* <li className="bac py-3 px-3  w-[300px] flex items-center gap-3  sm:hidden ">
-              <AiOutlineSearch className="text-[#C5E500] text-[25px]" />
-              <input
+            <Link to={"/search"}>
+              <li className=" py-3 px-3 cursor-pointer w-[300px] flex items-center gap-3  sm:hidden ">
+                <AiOutlineSearch className="text-[#C5E500] text-[25px]" />
+                {/* <p>Поиск по товарам</p> */}
+                {/* <input
                 type="text"
                 className="outline-none"
                 placeholder="Поиск по товарам"
-              />
-            </li> */}
+              /> */}
+              </li>
+            </Link>
+
             <li className="hidden md:block">
               {Burger ? (
                 <AiOutlineClose
@@ -86,14 +90,13 @@ const Header = () => {
                   <img src="/logo.svg" alt="" />
                 </Link>
               </div>
-              {/* <div className="bac py-3 px-3  w-[300px] flex items-center gap-3  ">
-                <AiOutlineSearch className="text-[#C5E500] text-[25px]" />
-                <input
-                  type="text"
-                  className="outline-none"
-                  placeholder="Поиск по товарам"
-                />
-              </div> */}
+              <Link to={"/search"}>
+                <li className=" py-3 px-3 cursor-pointer  flex items-center gap-3    ">
+                  <AiOutlineSearch className="text-[#C5E500] text-[25px]" />
+                  <p>Поиск</p>
+           
+                </li>
+              </Link>
               <div className="  flex flex-col items-center gap-5 mt-7">
                 <div className=" text-[14px] leading-[14px] font-[500]">
                   <Link to={"/catalog"}> Каталог Продукции</Link>
@@ -109,7 +112,7 @@ const Header = () => {
                   <div
                     onClick={() => {
                       setOpenModal(true);
-                      setBurger(false)
+                      setBurger(false);
                     }}
                     className="flex py-[10px] button px-[30px]"
                   >
