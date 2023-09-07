@@ -16,7 +16,6 @@ const Catalog = () => {
   const [ActiveTypes, setActiveTypes] = useState("");
   const [ActiveColors, setActiveColors] = useState("");
   const [Count, setCount] = useState(6);
-  // console.log(FillGoods);
   goods.forEach((item) => {
     item.color.forEach((color) => {
       const existingColor = uniqueColors.find(
@@ -35,9 +34,7 @@ const Catalog = () => {
       uniqueMaterials.push(item.material);
     }
   });
-  // console.log(uniqueColors);
-  // console.log(uniqueTypes);
-  // console.log(uniqueMaterials);
+ 
   useEffect(() => {
     if(localStorage.getItem("fillGood")){
       setFillGoods([...goods.filter(i => i.material == localStorage.getItem("fillGood"))]);

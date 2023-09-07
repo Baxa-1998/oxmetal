@@ -81,7 +81,6 @@ const ProductPage = () => {
     RAl,
   ]);
 
-  //   console.log(color);
   const pagination = {
     el: ".CreateColors",
     clickable: true,

@@ -6,7 +6,6 @@ import ProductCart from "../components/ProductCart";
 
 const SearchPage = () => {
   const goods = useSelector((state) => state.goods.data);
-  console.log(goods);
   const inp = useRef(null);
   const [FillGoods, setFillGoods] = useState([]);
   function searchObjects(inputValue) {
@@ -27,7 +26,6 @@ const SearchPage = () => {
 
     setFillGoods(filteredObjects);
   }
-  console.log();
   return (
     <div className=" bg-[#F2F2F2] min-h-[900px] py-[150px]">
       <div className=" w-full flex flex-col items-center justify-center ">

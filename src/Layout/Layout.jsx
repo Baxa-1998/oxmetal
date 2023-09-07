@@ -33,80 +33,80 @@ const Layout = () => {
   if (Load === "loading") {
     return <Loading />;
   } else if (Load === "fulfilled") {
-    return (
-      <>
-        <Modal.Provider value={{ setOpenModal, OpenModal }}>
-          {OpenModal ? (
-            <>
-              <div className="ConsultationModalWindow">
-                <img
-                  src="/icons/close.png"
-                  className="CloseModalWindow"
-                  id="CloseWindow"
+      return (
+        <>
+          <Modal.Provider value={{ setOpenModal, OpenModal }}>
+            {OpenModal ? (
+              <>
+                <div className="ConsultationModalWindow">
+                  <img
+                    src="/icons/close.png"
+                    className="CloseModalWindow"
+                    id="CloseWindow"
+                    onClick={() => {
+                      setOpenModal(false);
+                    }}
+                    alt=""
+                  />
+                  <h1>Заказать консультацию</h1>
+                  <p>
+                    Оставьте заявку на консультацию и мы свяжемся с вами в течении
+                    2х рабочих дней
+                  </p>
+                  <div className="OrderConsultationForm">
+                    <form
+                      onSubmit={(e) => {
+                        sendmessage(e , message , 
+                          message2);
+                      }}
+                      action=""
+                    >
+                      <label className="inputs">
+                        <input
+                          ref={message}
+                          className="ConsultationInpName"
+                          type="text"
+                          name="Name"
+                          placeholder="Ваше имя"
+                        />
+                        <div className="ModalCons">
+                          <PhoneInput
+                            ref={message2}
+                            className="ConsultationInpPhoneModal"
+                            country={"uz"} // Укажите страну по умолчанию (например, 'us' для США)
+                            value={""}
+                          />
+                        </div>
+                      </label>
+
+                      <label className="FormBtn">
+                        <button id="ConsultationSubmit">ОТПРАВИТЬ</button>
+                        <span>
+                          Нажимая кнопку «Отправить», я даю своё согласие на
+                          обработку и распространение персональных данных.
+                        </span>
+                      </label>
+                    </form>
+                  </div>
+                </div>
+                <div
                   onClick={() => {
                     setOpenModal(false);
                   }}
-                  alt=""
-                />
-                <h1>Заказать консультацию</h1>
-                <p>
-                  Оставьте заявку на консультацию и мы свяжемся с вами в течении
-                  2х рабочих дней
-                </p>
-                <div className="OrderConsultationForm">
-                  <form
-                    onSubmit={(e) => {
-                      sendmessage(e , message , 
-                        message2);
-                    }}
-                    action=""
-                  >
-                    <label className="inputs">
-                      <input
-                        ref={message}
-                        className="ConsultationInpName"
-                        type="text"
-                        name="Name"
-                        placeholder="Ваше имя"
-                      />
-                      <div className="ModalCons">
-                        <PhoneInput
-                          ref={message2}
-                          className="ConsultationInpPhoneModal"
-                          country={"uz"} // Укажите страну по умолчанию (например, 'us' для США)
-                          value={""}
-                        />
-                      </div>
-                    </label>
+                  className="modal_bg"
+                  id="CloseWindow"
+                ></div>
+              </>
+            ) : null}
 
-                    <label className="FormBtn">
-                      <button id="ConsultationSubmit">ОТПРАВИТЬ</button>
-                      <span>
-                        Нажимая кнопку «Отправить», я даю своё согласие на
-                        обработку и распространение персональных данных.
-                      </span>
-                    </label>
-                  </form>
-                </div>
-              </div>
-              <div
-                onClick={() => {
-                  setOpenModal(false);
-                }}
-                className="modal_bg"
-                id="CloseWindow"
-              ></div>
-            </>
-          ) : null}
-
-          <Header />
-          <main className="max-w-[2560px]  mx-auto">
-            <Outlet />
-          </main>
-          <Footer />
-        </Modal.Provider>
-      </>
-    );
+            <Header />
+            <main className="max-w-[2560px]  mx-auto">
+              <Outlet />
+            </main>
+            <Footer />
+          </Modal.Provider>
+        </>
+      );
   }
 };
 

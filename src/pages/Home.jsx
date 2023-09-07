@@ -57,7 +57,6 @@ const Home = () => {
         });
       }
       ProductsArr = [...new Set(ProductsArr)];
-      console.log(ProductsArr);
       setSelectArr(ProductsArr);
     }
 
