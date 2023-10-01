@@ -20,7 +20,6 @@ const ProductCart = ({ Product, idx }) => {
     key,
   } = Product;
 
-
   return (
     <div className="Goods_item ">
       <img
@@ -33,19 +32,23 @@ const ProductCart = ({ Product, idx }) => {
           ].src
         }
       />
-      <h1>
-        {material} {tipes} ({coating}-
-        <span>
-          {
-            color[
-              idx == undefined || idx == -1
-                ? Math.floor(Math.random() * color.length)
-                : idx
-            ].name
-          }
-        </span>
-        -{sizes})
-      </h1>
+
+      <Link to={"/product/" + key}>
+        <h1 className=" hover:underline hover:text-[#C5E500]">
+          {material} {tipes} ({coating}-
+          <span>
+            {
+              color[
+                idx == undefined || idx == -1
+                  ? Math.floor(Math.random() * color.length)
+                  : idx
+              ].name
+            }
+          </span>
+          -{sizes})
+        </h1>
+      </Link>
+
       <p>
         Материал: <span>{material}</span>
       </p>
@@ -73,6 +76,7 @@ const ProductCart = ({ Product, idx }) => {
             setOpenModal(true);
           }}
           src="./phone.svg"
+          className=" w-[40px]"
         />
       </div>
     </div>

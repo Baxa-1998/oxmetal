@@ -97,8 +97,21 @@ const ProductPage = () => {
     let activeSlideObj = color[0];
     setRAl(activeSlideObj.RGBA);
   };
+
+  const scrollToElement = (elementId) => {
+    const element = document.getElementById(elementId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' }); // Прокручиваем плавно
+    }
+  };
+  useEffect(()=>{
+    scrollToElement("product")
+  })
+
+
+
   return (
-    <div className=" bg-[#F2F2F2] pt-[100px] px-[5%]">
+    <div id="product" className=" bg-[#F2F2F2] pt-[100px] px-[5%]">
       {Prodict.length > 0 ? (
         <>
           <h1 className="lg:text-2xl text-4xl font-bold ">{material}</h1>

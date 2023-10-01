@@ -22,8 +22,8 @@ const Header = () => {
               </Link>
             </li>
             <Link to={"/search"}>
-              <li className=" py-3 px-3 cursor-pointer w-[300px] flex items-center gap-3  sm:hidden ">
-                <AiOutlineSearch className="text-[#C5E500] text-[25px]" />
+              <li className=" py-1 px-2 cursor-pointer w-fit bg-[#C5E500] rounded-full flex items-center gap-3  sm:hidden ">
+                <AiOutlineSearch className="text-white text-[25px]" />
                 {/* <p>Поиск по товарам</p> */}
                 {/* <input
                 type="text"
@@ -53,7 +53,7 @@ const Header = () => {
           </ul>
           <ul className="flex items-center gap-5">
             <li className=" md:hidden text-[14px] leading-[14px] font-[500]">
-              <Link to={"/catalog"}> Каталог Продукции</Link>
+              <Link to={"/catalog"} className=" hover:text-[#C5E500]"> Каталог Продукции</Link>
             </li>
             {/* <li className=" md:hidden">
               <select name="" id="">

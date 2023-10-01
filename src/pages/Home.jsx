@@ -8,7 +8,7 @@ import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { FreeMode, Pagination, Navigation } from "swiper/modules";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Modal } from "../contexts/Modal";
 import PhoneInput from "react-phone-input-2";
 import axios from "axios";
@@ -22,7 +22,7 @@ const Home = () => {
   const [FormData, setFormData] = useState({});
   const message = useRef(null);
   const message2 = useRef(null);
-
+   const navigate = useNavigate()
   useEffect(() => {
     let View = [];
     function create_category(arr, key, new_arr) {
@@ -62,6 +62,17 @@ const Home = () => {
 
     getSelects();
   }, [goods]);
+
+
+  const scrollToElement = (elementId) => {
+    const element = document.getElementById(elementId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' }); // Прокручиваем плавно
+    }
+  };
+  useEffect(()=>{
+    scrollToElement("main_page_preview")
+  })
   return (
     <>
       {/* <div className="  flex justify-between items-center ">
@@ -200,7 +211,7 @@ const Home = () => {
                           className={
                             SelectIdx == idx
                               ? "SelectsImgBg SelectsImgBgActive "
-                              : "SelectsImgBg "
+                              : "SelectsImgBg  "
                           }
                           src="/icons/Star 7.svg"
                           alt=""
@@ -221,6 +232,7 @@ const Home = () => {
                     to={"/catalog"}
                     onClick={() => {
                       localStorage.setItem("fillGood", item.name);
+                      
                     }}
                     key={item.name + idx}
                   >

@@ -7,6 +7,7 @@
   padding: 0;
   margin: 0;
   font-family: "Inter", sans-serif;
+  scroll-behavior: smooth;
 }
 
 @font-face {
@@ -193,7 +194,6 @@
   background-size: cover;
 }
 
-
 #main_page_preview {
   width: 100%;
   height: 750px;
@@ -202,41 +202,41 @@
   gap: 44px;
 }
 
- #main_page_preview .prewiew_left_side {
+#main_page_preview .prewiew_left_side {
   width: 45%;
   display: flex;
   flex-direction: column;
 }
 
- #main_page_preview .prewiew_left_side .main_page_logo {
+#main_page_preview .prewiew_left_side .main_page_logo {
   width: 244px;
   margin-top: 20%;
   max-width: none;
 }
 
- #main_page_preview .prewiew_left_side .construction {
+#main_page_preview .prewiew_left_side .construction {
   display: block;
 }
 
- #main_page_preview .prewiew_left_side h1 {
+#main_page_preview .prewiew_left_side h1 {
   // font-family: "Steppe";
   font-size: 68px;
   font-weight: 900;
   line-height: 75px;
-  color: #1E1E1E;
+  color: #1e1e1e;
   margin-top: 30px;
 }
 
- #main_page_preview .prewiew_left_side p {
+#main_page_preview .prewiew_left_side p {
   font-family: "Inter";
   font-size: 32px;
   font-weight: 400;
   line-height: 40px;
   letter-spacing: 0em;
-  color: #6A6A6A;
+  color: #6a6a6a;
 }
 
- #main_page_preview .prewiew_mask {
+#main_page_preview .prewiew_mask {
   min-width: 580px;
   max-width: 720px;
   width: 50%;
@@ -248,7 +248,6 @@
   -o-object-fit: cover;
   object-fit: cover;
 }
-
 
 .ralColor {
   position: absolute;
@@ -359,6 +358,20 @@ main_page_container #ProductsMain {
   justify-content: flex-start;
   gap: 10px;
   cursor: pointer;
+  &:hover {
+    // background-color: red;
+    .SelectsImg {
+      .SelectsImgBg  {
+
+        filter: grayscale(0%);
+      }
+
+    }
+    p{
+      color: #C5E500;
+    }
+    
+  }
 }
 
 #ProductsMain
@@ -818,8 +831,8 @@ main_page_container #ProductsMain {
   position: relative;
   outline: transparent;
 }
-.form-control{
-outline: none;
+.form-control {
+  outline: none;
 }
 #AnyQuestionsOrderConsultation
   .OrderConsultationMain
@@ -2880,7 +2893,6 @@ outline: none;
   position: relative;
 }
 
-
 .ConsultationModalWindow {
   width: 995px;
   height: 510px;
@@ -2889,7 +2901,7 @@ outline: none;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-    flex-direction: column;
+  flex-direction: column;
   align-items: center;
   z-index: 9999;
   padding: 37px 100px;
@@ -3181,7 +3193,6 @@ outline: none;
   }
 }
 
-
 footer {
   width: 100%;
   /* max-width: 2560px; */
@@ -3233,7 +3244,7 @@ footer ul li h1 {
 .footerLinks a img {
   width: 24px;
 }
-.special-label{
+.special-label {
   display: none;
 }
 
@@ -3243,17 +3254,17 @@ footer ul li h1 {
     padding: 54px 50px 96px 50px;
     height: fit-content;
     background-color: #fff;
-}
-footer ul {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-row-gap: 30px;
-}
+  }
+  footer ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-row-gap: 30px;
+  }
 }
 @media only screen and (max-width: 476px) {
   footer ul {
     grid-template-columns: repeat(1, 1fr);
-}
+  }
 }
 .consultation {
   all: unset;
@@ -3281,8 +3292,7 @@ footer ul {
 .consultation img {
   width: 50px;
 }
-@media only screen and (max-width: 673px){
-
+@media only screen and (max-width: 673px) {
   .products_page .products_details .details .consultation {
     width: 100%;
     margin-top: 15px;

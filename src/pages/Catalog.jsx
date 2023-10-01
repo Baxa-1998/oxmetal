@@ -76,7 +76,12 @@ const Catalog = () => {
       setFillGoods(copGoods);
     }
   }, [ActiveMaterial, ActiveTypes, ActiveColors]);
-
+  const scrollToElement = (elementId) => {
+    const element = document.getElementById(elementId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' }); // Прокручиваем плавно
+    }
+  };
   useEffect(() => {
     let FilterModal = document.querySelector(".FilterModal");
     let CloseFilterModal = document.querySelector(".CloseFilterModal");
@@ -87,13 +92,16 @@ const Catalog = () => {
     CloseFilterModal.onclick = () => {
       FilterModal.style.display = "none";
     };
+    scrollToElement('filter'); 
+   
+
   });
   return (
-    <div className="catalog_page pt-[50px] ">
+    <div  className="catalog_page pt-[50px] ">
       <div className="catalog_page_mask Anchor">
         <h1>Каталог товаров</h1>
       </div>
-      <div className="catalogFilter">
+      <div id="filter"  className="catalogFilter scroll-mt-[100px]">
         <div className="metalInfo"></div>
         <div className="FilteredProducts">
           <div className="FilterOptionsMain">

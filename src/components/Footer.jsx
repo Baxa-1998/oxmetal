@@ -6,13 +6,13 @@ const Footer = () => {
           <li>
             <h1>Каталог</h1>
             <div className="footerLinks">
-              <a href="#">
+              <a className="hover:text-[#C5E500]" href="#">
                 <p>Продукция</p>
               </a>
-              <a href="#">
+              <a className="hover:text-[#C5E500]" href="#">
                 <p>Производство</p>
               </a>
-              <a href="#">
+              <a className="hover:text-[#C5E500]" href="#">
                 <p>Услуги</p>
               </a>
             </div>
@@ -20,10 +20,10 @@ const Footer = () => {
           <li>
             <h1>Клиентам</h1>
             <div className="footerLinks">
-              <a href="#">
+              <a className="hover:text-[#C5E500]" href="#">
                 <p>О компании</p>
               </a>
-              <a href="#">
+              <a className="hover:text-[#C5E500]" href="#">
                 <p>Новости</p>
               </a>
             </div>
@@ -31,10 +31,10 @@ const Footer = () => {
           <li>
             <h1>Документы</h1>
             <div className="footerLinks">
-              <a href="#">
+              <a className="hover:text-[#C5E500]" href="#">
                 <p>Сертификат</p>
               </a>
-              <a href="#">
+              <a className="hover:text-[#C5E500]" href="#">
                 <p>Награды</p>
               </a>
             </div>
@@ -42,15 +42,15 @@ const Footer = () => {
           <li>
             <h1>Контакты</h1>
             <div className="footerLinks">
-              <a href="tel:+998910130013"
+              <a className="hover:text-[#C5E500]" href="tel:+998910130013"
                 ><img src="/icons/phone.png" alt="" />
                 <p>+998 91 013 00 13</p>
               </a>
-              <a href="mailto:"
+              <a className="hover:text-[#C5E500]" href="mailto:"
                 ><img src="/icons/mail.png" alt="" />
                 <p>oxriverconstruction@info.com</p>
               </a>
-              <a href="https://yandex.uz/maps/-/CCUOjBx~2B"
+              <a className="hover:text-[#C5E500]" href="https://yandex.uz/maps/-/CCUOjBx~2B"
                 ><img src="/icons/marker.png" alt="" />
                 <p>г.Ташкент</p>
               </a>
