@@ -3,20 +3,16 @@ import React, { useEffect, useRef, useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { useSelector } from "react-redux";
 import ProductCart from "../components/ProductCart";
+import { scrollToElement } from "../utils/functions";
 
 const SearchPage = () => {
   const goods = useSelector((state) => state.goods.data);
   const inp = useRef(null);
   const [FillGoods, setFillGoods] = useState([]);
-  const scrollToElement = (elementId) => {
-    const element = document.getElementById(elementId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' }); // Прокручиваем плавно
-    }
-  };
+
   useEffect(()=>{
     scrollToElement("search")
-  })
+  },[])
   function searchObjects(inputValue) {
     const searchTerms = inputValue.toLowerCase().split(" ");
 

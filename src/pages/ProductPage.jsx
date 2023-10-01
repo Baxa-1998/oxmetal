@@ -14,6 +14,7 @@ import "./styles.css";
 
 import { FreeMode, Navigation, Thumbs, Pagination } from "swiper/modules";
 import { Modal } from "../contexts/Modal";
+import { scrollToElement } from "../utils/functions";
 
 SwiperCore.use([Pagination]);
 
@@ -37,7 +38,9 @@ const ProductPage = () => {
     price,
     Guarantee,
     name,
+    blueprint,
   } = ProductItem;
+  // console.log(ProductItem);
   useEffect(() => {
     if (goods.length > 0) {
       setProdict([...goods.filter((i) => i.key == ProductId)]);
@@ -97,15 +100,9 @@ const ProductPage = () => {
     setRAl(activeSlideObj.RGBA);
   };
 
-  const scrollToElement = (elementId) => {
-    const element = document.getElementById(elementId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" }); // Прокручиваем плавно
-    }
-  };
   useEffect(() => {
     scrollToElement("product");
-  });
+  }, []);
 
   console.log(Prodict[0]);
 
@@ -132,7 +129,7 @@ const ProductPage = () => {
             >
               {Prodict[0].material}
             </Link>{" "}
-            / {" "} 
+            /{" "}
             <Link
               className="hover:text-[#C5E500]"
               onClick={() => {
@@ -190,12 +187,21 @@ const ProductPage = () => {
               </div>
               <div className="flex  gap-[21px]">
                 <img src="/alert-triangle.svg" alt="" />
-                <p className=" text-sm text-[#6A6A6A] font-bold">
+                <p className=" text-sm text-[#6A6A6A] font-bold sm:text-xs">
                   Цвета на экране монитора, а также детали внешнего вида
                   кровельного материала могут мотличаться от реальных. Наличие
                   конкретных цветов и профилей запрашивайте у дилеров.
                 </p>
               </div>
+              {blueprint.length > 0 ? (
+                <div className="mt-5">
+                  <img
+                    src={blueprint}
+                    className="w-full"
+                    alt=""
+                  />
+                </div>
+              ) : null}
             </div>
             <div className="w-1/2 lg:w-full">
               <h1 className=" text-3xl font-bold">Характеристики:</h1>
@@ -269,6 +275,9 @@ const ProductPage = () => {
                     <Link
                       to={"/product/" + item.key}
                       key={item.sizes + idx + item.idx}
+                      onClick={() => {
+                        scrollToElement("product");
+                      }}
                     >
                       <span
                         className={

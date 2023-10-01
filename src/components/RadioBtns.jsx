@@ -3,8 +3,13 @@
 const RadioBtns = ({ elem, Active, setActive }) => {
     const active = Active == elem ? "change opacity-100" : "change"
   return (
-    <div className="radioBtns" onClick={()=>{
+    <div className="radioBtns cursor-pointer" onClick={()=>{
+      if(elem == Active){
+        setActive('')
+      }else{
         setActive(elem)
+      }
+       
     }}>
       <div className="but">
         <div className={active}></div>

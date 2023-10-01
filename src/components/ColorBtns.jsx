@@ -3,7 +3,12 @@ const ColorBtns = ({ elem, Active, setActive }) => {
     const active = Active == elem.name ? "w-full h-[40px] rounded-lg relative colorActive" : " w-full h-[40px] rounded-lg relative"
   return (
     <div className=" flex-col flex items-center cursor-pointer" onClick={()=>{
-        setActive(elem.name)
+     
+        if(elem.name == Active){
+          setActive('')
+        }else{
+          setActive(elem.name)
+        }
     }}>
       <div
         className={active}

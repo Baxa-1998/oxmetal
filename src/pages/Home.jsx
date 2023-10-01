@@ -13,6 +13,7 @@ import { Modal } from "../contexts/Modal";
 import PhoneInput from "react-phone-input-2";
 import axios from "axios";
 import { sendmessage } from "../utils/sendTgBot";
+import { scrollToElement } from "../utils/functions";
 
 const Home = () => {
   const goods = useSelector((state) => state.goods.data);
@@ -64,15 +65,10 @@ const Home = () => {
   }, [goods]);
 
 
-  const scrollToElement = (elementId) => {
-    const element = document.getElementById(elementId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' }); // Прокручиваем плавно
-    }
-  };
+
   useEffect(()=>{
     scrollToElement("main_page_preview")
-  })
+  },[])
   return (
     <>
       {/* <div className="  flex justify-between items-center ">
