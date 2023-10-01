@@ -38,6 +38,10 @@ const Catalog = () => {
   useEffect(() => {
     if(localStorage.getItem("fillGood")){
       setFillGoods([...goods.filter(i => i.material == localStorage.getItem("fillGood"))]);
+      setActiveMaterial(localStorage.getItem("fillGood"))
+      if(localStorage.getItem("fillGoodProfile")){
+        setActiveTypes(localStorage.getItem("fillGoodProfile"))
+      }
       setTimeout(()=>{
         localStorage.clear()
       } , 3000)
@@ -82,6 +86,9 @@ const Catalog = () => {
       element.scrollIntoView({ behavior: 'smooth' }); // Прокручиваем плавно
     }
   };
+  useEffect(()=>{
+    scrollToElement('filter'); 
+  },[])
   useEffect(() => {
     let FilterModal = document.querySelector(".FilterModal");
     let CloseFilterModal = document.querySelector(".CloseFilterModal");
@@ -92,7 +99,7 @@ const Catalog = () => {
     CloseFilterModal.onclick = () => {
       FilterModal.style.display = "none";
     };
-    scrollToElement('filter'); 
+   
    
 
   });

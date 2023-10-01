@@ -36,8 +36,7 @@ const ProductPage = () => {
     view,
     price,
     Guarantee,
-    name
-    
+    name,
   } = ProductItem;
   useEffect(() => {
     if (goods.length > 0) {
@@ -93,7 +92,7 @@ const ProductPage = () => {
     setRAl(activeSlideObj.RGBA);
   }
   const handleItemClick = (swiper) => {
-    swiper.activeIndex = 0
+    swiper.activeIndex = 0;
     let activeSlideObj = color[0];
     setRAl(activeSlideObj.RGBA);
   };
@@ -101,14 +100,14 @@ const ProductPage = () => {
   const scrollToElement = (elementId) => {
     const element = document.getElementById(elementId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' }); // Прокручиваем плавно
+      element.scrollIntoView({ behavior: "smooth" }); // Прокручиваем плавно
     }
   };
-  useEffect(()=>{
-    scrollToElement("product")
-  })
+  useEffect(() => {
+    scrollToElement("product");
+  });
 
-
+  console.log(Prodict[0]);
 
   return (
     <div id="product" className=" bg-[#F2F2F2] pt-[100px] px-[5%]">
@@ -116,11 +115,38 @@ const ProductPage = () => {
         <>
           <h1 className="lg:text-2xl text-4xl font-bold ">{material}</h1>
           <p>
-            <Link to={"/catalog"}>Каталог</Link> /{" "}
-            <Link to={"/catalog"}>Каталог</Link>
+            <Link className="hover:text-[#C5E500]" to={"/"}>
+              Главная
+            </Link>{" "}
+            /{" "}
+            <Link className="hover:text-[#C5E500]" to={"/catalog"}>
+              Каталог
+            </Link>{" "}
+            /{" "}
+            <Link
+              className="hover:text-[#C5E500]"
+              onClick={() => {
+                localStorage.setItem("fillGood", Prodict[0].material);
+              }}
+              to={"/catalog"}
+            >
+              {Prodict[0].material}
+            </Link>{" "}
+            / {" "} 
+            <Link
+              className="hover:text-[#C5E500]"
+              onClick={() => {
+                localStorage.setItem("fillGood", Prodict[0].material);
+                localStorage.setItem("fillGoodProfile", Prodict[0].tipes);
+              }}
+              to={"/catalog"}
+            >
+              {Prodict[0].tipes}
+            </Link>
           </p>
           <h1 className="text-4xl font-bold mt-5 lg:text-2xl">
-            {material} {tipes} ({coating}-<span>{color.length === 1 ? color[0].RGBA : RAl}</span>-{sizes})
+            {material} {tipes} ({coating}-
+            <span>{color.length === 1 ? color[0].RGBA : RAl}</span>-{sizes})
           </h1>
           <div className="flex gap-8 mt-5 relative lg:flex-col pb-10">
             <div className="w-1/2 lg:w-full h-fit sticky lg:static top-[100px]  left-0">
@@ -189,7 +215,9 @@ const ProductPage = () => {
                     <Link
                       to={"/product/" + item.key}
                       key={item.coating + idx + item.idx}
-                      onClick={()=> {handleItemClick()}}
+                      onClick={() => {
+                        handleItemClick();
+                      }}
                     >
                       <span
                         className={
@@ -215,13 +243,13 @@ const ProductPage = () => {
                 <p>
                   Цена:{" "}
                   <span className="font-medium">
-                    {price === 0
-                      ? "Цена по запросу"
-                      :
+                    {price === 0 ? (
+                      "Цена по запросу"
+                    ) : (
                       <>
-                      { price.toLocaleString("ru-RU")} сум/м<sup>2</sup>
+                        {price.toLocaleString("ru-RU")} сум/м<sup>2</sup>
                       </>
-}
+                    )}
                   </span>
                 </p>
                 <div className=" border-t border-black border-solid mt-5"></div>
@@ -256,18 +284,19 @@ const ProductPage = () => {
                 </div>
                 <div className=" border-t border-black border-solid mt-5"></div>
               </div>
-              <button onClick={() =>{
-                setOpenModal(true)
-              }} className="consultation">
-              <img src="/icons/phone.svg" alt="" />
-              <p>КОНСУЛЬТАЦИЯ</p>
-            </button>
+              <button
+                onClick={() => {
+                  setOpenModal(true);
+                }}
+                className="consultation"
+              >
+                <img src="/icons/phone.svg" alt="" />
+                <p>КОНСУЛЬТАЦИЯ</p>
+              </button>
             </div>
           </div>
         </>
-      ) : (
-        null
-      )}
+      ) : null}
     </div>
   );
 };
