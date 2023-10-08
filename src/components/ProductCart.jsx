@@ -22,17 +22,18 @@ const ProductCart = ({ Product, idx }) => {
 
   return (
     <div className="Goods_item ">
-      <img
-        className="ProductImgW"
-        src={
-          color[
-            idx == undefined || idx == -1
-              ? Math.floor(Math.random() * color.length)
-              : idx
-          ].src
-        }
-      />
-
+      <Link to={"/product/" + key}>
+        <img
+          className="ProductImgW"
+          src={
+            color[
+              idx == undefined || idx == -1
+                ? Math.floor(Math.random() * color.length)
+                : idx
+            ].src
+          }
+        />
+      </Link>
       <Link to={"/product/" + key}>
         <h1 className=" hover:underline hover:text-[#C5E500]">
           {material} {tipes} ({coating}-

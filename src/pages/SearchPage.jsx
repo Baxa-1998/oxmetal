@@ -16,18 +16,19 @@ const SearchPage = () => {
   function searchObjects(inputValue) {
     const searchTerms = inputValue.toLowerCase().split(" ");
 
-    const filteredObjects = goods.filter((obj) => {
-      return searchTerms.every((term) => {
-        return (
-          obj.tipes.toLowerCase().includes(term) ||
-          obj.view.toLowerCase().includes(term) ||
-          obj.sizes.toLowerCase().includes(term) ||
-          obj.material.toLowerCase().includes(term) ||
-          obj.coating.toLowerCase().includes(term) ||
-          obj.color.some((color) => color.RGBA === term)
-        );
+    const filteredObjects = goods.filter(obj => {
+      return searchTerms.every(term => {
+          return (
+              obj.tipes.toLowerCase().includes(term) ||
+              obj.view.toLowerCase().includes(term) ||
+              obj.sizes.toLowerCase().includes(term) ||
+              obj.material.toLowerCase().includes(term) ||
+              obj.coating.toLowerCase().includes(term) ||
+              obj.color.some(color => color.RGBA === term) ||
+              (obj.keyWords && obj.keyWords.some(keyword => keyword.toLowerCase().includes(term)))
+          );
       });
-    });
+  });
 
     setFillGoods(filteredObjects);
   

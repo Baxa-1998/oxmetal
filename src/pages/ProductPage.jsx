@@ -15,6 +15,7 @@ import "./styles.css";
 import { FreeMode, Navigation, Thumbs, Pagination } from "swiper/modules";
 import { Modal } from "../contexts/Modal";
 import { scrollToElement } from "../utils/functions";
+import Calculator from "../components/Calculator";
 
 SwiperCore.use([Pagination]);
 
@@ -40,7 +41,6 @@ const ProductPage = () => {
     name,
     blueprint,
   } = ProductItem;
-  // console.log(ProductItem);
   useEffect(() => {
     if (goods.length > 0) {
       setProdict([...goods.filter((i) => i.key == ProductId)]);
@@ -104,10 +104,9 @@ const ProductPage = () => {
     scrollToElement("product");
   }, []);
 
-  console.log(Prodict[0]);
 
   return (
-    <div id="product" className=" bg-[#F2F2F2] pt-[100px] px-[5%]">
+    <div id="product" className=" bg-[#F2F2F2] py-[100px] px-[5%]">
       {Prodict.length > 0 ? (
         <>
           <h1 className="lg:text-2xl text-4xl font-bold ">{material}</h1>
@@ -195,11 +194,7 @@ const ProductPage = () => {
               </div>
               {blueprint.length > 0 ? (
                 <div className="mt-5">
-                  <img
-                    src={blueprint}
-                    className="w-full"
-                    alt=""
-                  />
+                  <img src={blueprint} className="w-full" alt="" />
                 </div>
               ) : null}
             </div>
@@ -304,6 +299,9 @@ const ProductPage = () => {
               </button>
             </div>
           </div>
+          {
+            price > 0 ? <Calculator product={ProductItem}/> : null
+          }
         </>
       ) : null}
     </div>

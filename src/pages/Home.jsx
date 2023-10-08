@@ -13,7 +13,7 @@ import { Modal } from "../contexts/Modal";
 import PhoneInput from "react-phone-input-2";
 import axios from "axios";
 import { sendmessage } from "../utils/sendTgBot";
-import { scrollToElement } from "../utils/functions";
+import { checkCookie, scrollToElement } from "../utils/functions";
 
 const Home = () => {
   const goods = useSelector((state) => state.goods.data);
@@ -23,7 +23,9 @@ const Home = () => {
   const [FormData, setFormData] = useState({});
   const message = useRef(null);
   const message2 = useRef(null);
-   const navigate = useNavigate()
+  const navigate = useNavigate();
+  const [CheckForm, setCheckForm] = useState(false);
+  const [CheckCokkie, setCheckCokkie] = useState(false);
   useEffect(() => {
     let View = [];
     function create_category(arr, key, new_arr) {
@@ -64,11 +66,9 @@ const Home = () => {
     getSelects();
   }, [goods]);
 
-
-
-  useEffect(()=>{
-    scrollToElement("main_page_preview")
-  },[])
+  useEffect(() => {
+    scrollToElement("main_page_preview");
+  }, []);
   return (
     <>
       {/* <div className="  flex justify-between items-center ">
@@ -228,7 +228,6 @@ const Home = () => {
                     to={"/catalog"}
                     onClick={() => {
                       localStorage.setItem("fillGood", item.name);
-                      
                     }}
                     key={item.name + idx}
                   >
@@ -430,7 +429,16 @@ const Home = () => {
           <div className="OrderConsultationForm">
             <form
               onSubmit={(e) => {
+                if (checkCookie("ChangeForm")) {
+                  setCheckCokkie(true);
+                } else {
+                  setCheckCokkie(false);
+                }
                 sendmessage(e, message, message2);
+                setCheckForm(true);
+                setTimeout(() => {
+                  setCheckForm(false);
+                }, 5000);
               }}
             >
               <label className="inputs">
@@ -451,6 +459,29 @@ const Home = () => {
                   />
                 </div>
               </label>
+              {CheckForm ? (
+                <>
+                  {message.current.value.length > 0 &&
+                  message2.current.state.formattedNumber.length > 5 ? (
+                    <>
+                      {CheckCokkie ? (
+                        <p className=" my-5  opacity-50">
+                          Вы уже отправляли заявку повторите позже
+                        </p>
+                      ) : (
+                        <p className=" my-5  opacity-50">
+                          Заявка отправлена . Мы свяжемся с вами в течении 2х
+                          рабочих дней
+                        </p>
+                      )}
+                    </>
+                  ) : (
+                    <>
+                      <p className=" my-5  opacity-50">Заполните поля</p>
+                    </>
+                  )}
+                </>
+              ) : null}
 
               <label className="FormBtn">
                 <button id="ConsultationSubmit">ОТПРАВИТЬ</button>

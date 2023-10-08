@@ -16,13 +16,12 @@ const Header = () => {
         <nav className="mx-auto max-w-[2560px]  flex justify-between items-center  ">
           <ul className="justify-start flex gap-5 items-center  p-5 md:w-[100%] md:justify-between ">
             <li className="hidden sm:block"></li>
-            <li>
+            <li className="flex">
               <Link to={"/"}>
                 <img src="/logo.svg" alt="" />
               </Link>
-            </li>
-            <Link to={"/search"}>
-              <li className=" py-1 px-2 cursor-pointer w-fit bg-[#C5E500] rounded-full flex items-center gap-3  sm:hidden ">
+              <Link to={"/search"}>
+              <div className=" py-1 px-2 cursor-pointer w-fit bg-[#C5E500] ml-5  rounded-full flex items-center gap-3  sm:hidden ">
                 <AiOutlineSearch className="text-white text-[25px]" />
                 {/* <p>Поиск по товарам</p> */}
                 {/* <input
@@ -30,8 +29,10 @@ const Header = () => {
                 className="outline-none"
                 placeholder="Поиск по товарам"
               /> */}
-              </li>
+              </div>
             </Link>
+            </li>
+            
 
             <li className="hidden md:block">
               {Burger ? (

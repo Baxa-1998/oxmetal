@@ -9,11 +9,14 @@ import Footer from "../components/Footer";
 import axios from "axios";
 import Loading from "../components/Loading";
 import { sendmessage } from "../utils/sendTgBot";
+import { checkCookie } from "../utils/functions";
 
 const Layout = () => {
   const goods = useSelector((state) => state.goods.data);
   const Load = useSelector((state) => state.goods.status);
   const [OpenModal, setOpenModal] = useState(false);
+  const [CheckForm, setCheckForm] = useState(false);
+  const [CheckCokkie, setCheckCokkie] = useState(false);
   const dispatch = useDispatch();
   useEffect(() => {
     if (!goods.length || Load === "idle") {
@@ -56,7 +59,16 @@ const Layout = () => {
                 <div className="OrderConsultationForm">
                   <form
                     onSubmit={(e) => {
+                      if (checkCookie("ChangeForm")) {
+                        setCheckCokkie(true);
+                      } else {
+                        setCheckCokkie(false);
+                      }
                       sendmessage(e, message, message2);
+                      setCheckForm(true);
+                      setTimeout(() => {
+                        setCheckForm(false);
+                      }, 5000);
                     }}
                     action=""
                   >
@@ -67,6 +79,7 @@ const Layout = () => {
                         type="text"
                         name="Name"
                         placeholder="Ваше имя"
+                        minLength={5}
                       />
                       <div className="ModalCons">
                         <PhoneInput
@@ -77,7 +90,29 @@ const Layout = () => {
                         />
                       </div>
                     </label>
-
+                    {CheckForm ? (
+                      <>
+                        {message.current.value.length > 0 &&
+                        message2.current.state.formattedNumber.length > 5 ? (
+                          <>
+                            {CheckCokkie ? (
+                              <p className=" my-5  opacity-50">
+                                Вы уже отправляли заявку повторите позже
+                              </p>
+                            ) : (
+                              <p className=" my-5  opacity-50">
+                                Заявка отправлена . Мы свяжемся с вами в течении
+                                2х рабочих дней
+                              </p>
+                            )}
+                          </>
+                        ) : 
+                        <>
+                        <p>Заполните поля</p>
+                        </>
+                        }
+                      </>
+                    ) : null}
                     <label className="FormBtn">
                       <button id="ConsultationSubmit">ОТПРАВИТЬ</button>
                       <span>

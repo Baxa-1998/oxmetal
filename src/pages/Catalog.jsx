@@ -229,7 +229,7 @@ const Catalog = () => {
             {FillGoods.length >= Count ? (
               <>
                 {Count >= FillGoods.length || Count === FillGoods.length ? (
-                  <p
+                  <div
                     onClick={() => {
                       FillGoods.length <= Count
                         ? setCount(6)
@@ -237,18 +237,18 @@ const Catalog = () => {
                     }}
                   >
                     <div className="FilterConteinerAddPlus">Свернуть</div>
-                  </p>
+                  </div>
                 ) : null}
               </>
             ) : null}
             {Count < FillGoods.length ? (
-              <p
+              <div
                 onClick={() => {
                   FillGoods.length <= Count ? setCount(6) : setCount(Count + 6);
                 }}
               >
                 <div className="FilterConteinerAddPlus">Показать еще</div>
-              </p>
+              </div>
             ) : null}
           </div>
         </div>
