@@ -544,7 +544,7 @@ main_page_container #ProductsMain {
   flex-wrap: nowrap;
   gap: 55px;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   margin-top: 45px;
 }
 
@@ -556,8 +556,9 @@ main_page_container #ProductsMain {
 
 #about_company .about_company_numbers .numbers {
   text-align: center;
-  height: 100px;
+  // height: 100px;
   width: fit-content;
+  
 }
 
 #about_company .about_company_numbers .numbers span {
@@ -2343,7 +2344,9 @@ main_page_container #ProductsMain {
     width: 100%;
   }
 }
-
+.calcTitle p {
+  font-size: 14px;
+}
 @media only screen and (max-width: 524px) {
   #main_page_preview {
     gap: 30px;
@@ -2555,7 +2558,7 @@ main_page_container #ProductsMain {
   }
   .calcTitle p {
     font-size: 10px;
-    white-space: nowrap;
+    // white-space: nowrap;
   }
   #GoTOCatalog .GoTOCatalogLeftSide h1 {
     font-size: 23px;
@@ -2716,15 +2719,15 @@ main_page_container #ProductsMain {
     display: none;
   }
 
-  #about_company .about_company_numbers {
-    gap: 70px;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-areas:
-      "a b1 b b2 c"
-      "d d d d d";
-    align-items: center;
-  }
+  // #about_company .about_company_numbers {
+  //   gap: 70px;
+  //   display: grid;
+  //   grid-template-columns: repeat(5, 1fr);
+  //   grid-template-areas:
+  //     "a b1 b b2 c"
+  //     "d d d d d";
+  //   align-items: center;
+  // }
 
   #numbers4 {
     /* padding: 0 10px; */
@@ -2742,10 +2745,10 @@ main_page_container #ProductsMain {
     grid-area: c;
   }
 
-  #numbers4 {
-    grid-area: d;
-    margin-left: 100px;
-  }
+  // #numbers4 {
+  //   grid-area: d;
+  //   margin-left: 100px;
+  // }
 
   .border1 {
     grid-area: b1;
@@ -2767,12 +2770,12 @@ main_page_container #ProductsMain {
    #about_company .about_company_numbers .border2{
       display: none;
   } */
-  #about_company .about_company_numbers {
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-areas:
-      "a b1 b"
-      "c b2 d";
-  }
+  // #about_company .about_company_numbers {
+  //   grid-template-columns: repeat(3, 1fr);
+  //   grid-template-areas:
+  //     "a b1 b"
+  //     "c b2 d";
+  // }
 
   #numbers4 {
     margin-left: 0px;
@@ -2780,13 +2783,13 @@ main_page_container #ProductsMain {
 }
 
 @media only screen and (max-width: 1024px) {
-  #about_company .about_company_numbers {
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-areas:
-      "a b1 b"
-      "c b2 d";
-    align-items: flex-start;
-  }
+  // #about_company .about_company_numbers {
+  //   grid-template-columns: repeat(3, 1fr);
+  //   grid-template-areas:
+  //     "a b1 b"
+  //     "c b2 d";
+  //   align-items: flex-start;
+  // }
 }
 
 @media only screen and (max-width: 604px) {
@@ -2800,15 +2803,15 @@ main_page_container #ProductsMain {
 }
 
 @media only screen and (max-width: 460px) {
-  #about_company .about_company_numbers {
-    grid-template-columns: repeat(1, 1fr);
-    grid-template-areas:
-      "a"
-      "b"
-      "c"
-      "d";
-    align-items: center;
-  }
+  // #about_company .about_company_numbers {
+  //   grid-template-columns: repeat(1, 1fr);
+  //   grid-template-areas:
+  //     "a"
+  //     "b"
+  //     "c"
+  //     "d";
+  //   align-items: center;
+  // }
 
   #about_company .about_company_numbers .border {
     display: none;
@@ -2837,14 +2840,14 @@ main_page_container #ProductsMain {
 }
 
 @media only screen and (max-width: 415px) {
-  #about_company .about_company_numbers {
-    grid-template-columns: repeat(1, 1fr);
-    grid-template-areas:
-      "a"
-      "b"
-      "c"
-      "d";
-  }
+  // #about_company .about_company_numbers {
+  //   grid-template-columns: repeat(1, 1fr);
+  //   grid-template-areas:
+  //     "a"
+  //     "b"
+  //     "c"
+  //     "d";
+  // }
 
   .border1 {
     display: none;
@@ -3354,9 +3357,7 @@ footer ul li h1 {
   border-bottom: 1px solid #1e1e1e;
 }
 
-.calcTitle p {
-  font-size: 14px;
-}
+
 
 .readonlyInp {
   background-color: var(--main-color) !important;
@@ -3416,15 +3417,8 @@ footer ul li h1 {
   width: 220px;
 }
 @media only screen and (max-width: 971px) {
-  .Calcmain {
-    flex-direction: column;
-  }
-  .calc {
-    width: 100%;
-  }
-  .calcTotal {
-    width: 100%;
-  }
+
+
   .calcTitle input {
     width: 100%;
   }

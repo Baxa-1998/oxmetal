@@ -12,10 +12,12 @@ export default {
       xl: { max: "1279px" },
 
       lg: { max: "1024px" },
+      ll: { max: "1200px" },
 
       md: { max: "767px" },
       
       sm: { max: "600px" },
+      ss: { max: "470px" },
       mb: { max: "425px" },
       yu: {max: "100px"}
     },

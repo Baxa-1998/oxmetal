@@ -46,8 +46,8 @@ const Calculator = ({ product }) => {
   }, [Calc]);
 
   return (
-    <div className="Calcmain px-5">
-      <div className="calc">
+    <div className="Calcmain px-5 sm:px-0 ll:flex-col">
+      <div className="calc ll:w-full">
         {Calc.map((item, idx) => (
           <div className="calcCont" key={idx + item.id}>
             <div className="calcItem">
@@ -84,14 +84,20 @@ const Calculator = ({ product }) => {
                   className="readonlyInp"
                 />
               </div>
-              <div
+              {
+                Calc.length > 1 ?  <div
                 className="deleteCalc"
                 onClick={() => {
-                  Delete(idx);
+                  if(Calc.length > 1){
+                    Delete(idx);
+                  }
+                 
                 }}
               >
                 <img src="/icons/musorca.svg" className=" w-1/2" />
-              </div>
+              </div> : null
+              }
+             
             </div>
           </div>
         ))}
@@ -117,7 +123,7 @@ const Calculator = ({ product }) => {
         </div>
       </div>
 
-      <div className="calcTotal">
+      <div className="calcTotal ll:w-full">
         <div className="calcTotalResult">
           <h1 className="calcPrice">
             {TotalPrice.toLocaleString("ru-RU")} сум

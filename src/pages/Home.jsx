@@ -66,9 +66,61 @@ const Home = () => {
     getSelects();
   }, [goods]);
 
+
+
+
+
   useEffect(() => {
     scrollToElement("main_page_preview");
   }, []);
+
+
+
+  //нарастаюшие цифры
+  ///////////////////////////////////////////////////////////////////////////////////
+  let time = 2000;
+  let s = false;
+  function numbers(num, el, step) {
+    if (s === false) {
+      let n = document.querySelector(`#${el}`);
+      let chislo = 0;
+      let timing = Math.floor(time / (num / step));
+      let interval = setInterval(() => {
+        chislo = chislo + step;
+        if (chislo >= num) {
+          clearInterval(interval);
+          if (chislo > num) {
+            chislo = num;
+          }
+        }
+        n.textContent = chislo;
+      }, timing);
+    }
+  }
+  function isElementInViewport(element) {
+    var rect = element.getBoundingClientRect();
+    return (
+      rect.top >= 0 &&
+      rect.left >= 0 &&
+      rect.bottom <=
+        (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+  }
+  function handleScroll() {
+    var animatedElements = document.querySelectorAll(".numbers");
+    animatedElements.forEach(function (element) {
+      if (isElementInViewport(element)) {
+        numbers(1500, "chislo1", 30);
+        numbers(27147, "chislo2", 140);
+        numbers(50, "chislo3", 1);
+        numbers(20, "chislo4", 1);
+        s = true;
+      }
+    });
+  }
+  window.addEventListener("scroll", handleScroll);
+///////////////////////////////////////////////////////////////////////////////////
   return (
     <>
       {/* <div className="  flex justify-between items-center ">
@@ -250,32 +302,32 @@ const Home = () => {
       <div id="about_company">
         <h1 className="logo_about">КАК МЫ РАБОТАЕМ</h1>
 
-        <div className="about_company_numbers ">
-          <div className="numbers" id="numbers1">
-            <span id="chislo1">1500</span>
+        <div className="about_company_numbers xl:grid xl:grid-cols-2 xl:justify-items-center gap-5 ss:grid-cols-1">
+          <div className="numbers">
+            <span id="chislo1">0</span>
             <p className="a">
               Отгруженных <br />
               товаров
             </p>
           </div>
-          <div className="border border1"></div>
-          <div className="numbers" id="numbers2">
-            <span id="chislo2">27147</span>
+          {/* <div className="border border1"></div> */}
+          <div className="numbers">
+            <span id="chislo2">0</span>
             <p className="a">
               Квадратных <br />
               метров
             </p>
           </div>
-          <div className="border border2"></div>
+          {/* <div className="border border2"></div> */}
 
-          <div className="numbers" id="numbers3">
-            <span id="chislo3">50</span>
+          <div className="numbers">
+            <span id="chislo3">0</span>
             <p className="a">Контрагентов</p>
           </div>
-          <div className="border border3"></div>
+          {/* <div className="border border3"></div> */}
 
-          <div className="numbers" id="numbers4">
-            <span id="chislo4">20</span>
+          <div className="numbers">
+            <span id="chislo4">0</span>
             <p className="a">
               Крупных компаний <br />
               поставщиков
