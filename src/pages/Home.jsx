@@ -149,8 +149,8 @@ const Home = () => {
         </div>
       </div> */}
       <div id="main_page_preview">
-        <div className="prewiew_mask"></div>
-        <div className="prewiew_left_side">
+        <div className="prewiew_mask" data-aos="fade-right" ></div>
+        <div className="prewiew_left_side" data-aos="fade-left">
           <img
             src="/icons/main_Page_logo.png"
             className="main_page_logo"

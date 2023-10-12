@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 // eslint-disable-next-line no-unused-vars
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Modal } from "../contexts/Modal";
 
@@ -19,9 +19,9 @@ const ProductCart = ({ Product, idx }) => {
     sizes,
     key,
   } = Product;
-
+ 
   return (
-    <div className="Goods_item ">
+    <div className="Goods_item " data-aos="fade-up" data-aos-duration="700" data-aos-anchor-placement="bottom-bottom">
       <Link to={"/product/" + key}>
         <img
           className="ProductImgW"

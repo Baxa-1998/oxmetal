@@ -4,6 +4,8 @@ import "./index.scss";
 import App from "./App";
 import { Provider } from "react-redux";
 import { store } from "./app/store";
+import Aos from "aos";
+Aos.init();
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store={store}>

@@ -10,6 +10,7 @@ import axios from "axios";
 import Loading from "../components/Loading";
 import { sendmessage } from "../utils/sendTgBot";
 import { checkCookie } from "../utils/functions";
+import Aos from "aos";
 
 const Layout = () => {
   const goods = useSelector((state) => state.goods.data);
@@ -32,7 +33,9 @@ const Layout = () => {
   const message2 = useRef(null);
 
   useEffect(() => {});
-
+  useEffect(() => {
+  
+  }, [])
   if (Load === "loading") {
     return <Loading />;
   } else if (Load === "fulfilled") {
