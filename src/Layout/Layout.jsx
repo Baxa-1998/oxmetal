@@ -6,11 +6,9 @@ import { useEffect, useRef, useState } from "react";
 import { Modal } from "../contexts/Modal";
 import PhoneInput from "react-phone-input-2";
 import Footer from "../components/Footer";
-import axios from "axios";
 import Loading from "../components/Loading";
-import { sendmessage } from "../utils/sendTgBot";
-import { checkCookie } from "../utils/functions";
-import Aos from "aos";
+import { sendmessage } from "../../utils/sendTgBot";
+import { checkCookie } from "../../utils/functions";
 
 const Layout = () => {
   const goods = useSelector((state) => state.goods.data);

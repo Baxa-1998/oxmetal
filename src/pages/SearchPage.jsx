@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { useSelector } from "react-redux";
 import ProductCart from "../components/ProductCart";
-import { scrollToElement } from "../utils/functions";
+import { scrollToElement } from "../../utils/functions";
 
 const SearchPage = () => {
   const goods = useSelector((state) => state.goods.data);

@@ -14,7 +14,7 @@ import "./styles.css";
 
 import { FreeMode, Navigation, Thumbs, Pagination } from "swiper/modules";
 import { Modal } from "../contexts/Modal";
-import { scrollToElement } from "../utils/functions";
+import { scrollToElement } from "../../utils/functions";
 import Calculator from "../components/Calculator";
 
 SwiperCore.use([Pagination]);

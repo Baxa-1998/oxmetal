@@ -12,8 +12,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { Modal } from "../contexts/Modal";
 import PhoneInput from "react-phone-input-2";
 import axios from "axios";
-import { sendmessage } from "../utils/sendTgBot";
-import { checkCookie, scrollToElement } from "../utils/functions";
+import { sendmessage } from "../../utils/sendTgBot";
+import { checkCookie, scrollToElement } from "../../utils/functions";
 
 const Home = () => {
   const goods = useSelector((state) => state.goods.data);

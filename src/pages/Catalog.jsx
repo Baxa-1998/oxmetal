@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import ProductCart from "../components/ProductCart";
 import RadioBtns from "../components/RadioBtns";
 import ColorBtns from "../components/ColorBtns";
-import { scrollToElement } from "../utils/functions";
+import { scrollToElement } from "../../utils/functions";
 
 const Catalog = () => {
   const goods = useSelector((state) => state.goods.data);
