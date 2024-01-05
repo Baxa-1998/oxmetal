@@ -393,7 +393,7 @@ const Home = () => {
         <div className="flex w-fit absolute  justify-between  items-center sliderWraper  h-full p-5 gap-10 ">
           <div className="w-fit">
             <img
-              src="/public/slider/slide1.png"
+              src="/slider/slide1.png"
               className=" max-w-[150px]"
               alt=""
             />
