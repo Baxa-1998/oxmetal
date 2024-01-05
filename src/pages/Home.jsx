@@ -400,28 +400,28 @@ const Home = () => {
           </div>
           <div className="w-fit">
             <img
-              src="/public/slider/slide2.png"
+              src="/slider/slide2.png"
               className=" max-w-[150px]"
               alt=""
             />
           </div>
           <div className="w-fit">
             <img
-              src="/public/slider/slide3.webp"
+              src="/slider/slide3.webp"
               className=" max-w-[150px] w-[100px] h-hull"
               alt=""
             />
           </div>
           <div className="w-fit">
             <img
-              src="/public/slider/slide4.png"
+              src="/slider/slide4.png"
               className=" max-w-[150px]"
               alt=""
             />
           </div>
           <div className="w-fit">
             <img
-              src="/public/slider/slide5.svg"
+              src="/slider/slide5.svg"
               className=" max-w-[150px] "
               alt=""
             />
