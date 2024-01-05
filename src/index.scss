@@ -558,7 +558,6 @@ main_page_container #ProductsMain {
   text-align: center;
   // height: 100px;
   width: fit-content;
-  
 }
 
 #about_company .about_company_numbers .numbers span {
@@ -3325,8 +3324,8 @@ footer ul li h1 {
   flex-direction: column;
   gap: 20px;
 }
-.calcPrice{
-  display: block; 
+.calcPrice {
+  display: block;
   font-size: 2em;
   font-weight: bold;
 }
@@ -3356,8 +3355,6 @@ footer ul li h1 {
   /* border-radius: 8px; */
   border-bottom: 1px solid #1e1e1e;
 }
-
-
 
 .readonlyInp {
   background-color: var(--main-color) !important;
@@ -3417,8 +3414,6 @@ footer ul li h1 {
   width: 220px;
 }
 @media only screen and (max-width: 971px) {
-
-
   .calcTitle input {
     width: 100%;
   }
@@ -3427,3 +3422,24 @@ footer ul li h1 {
     width: 90%;
   }
 }
+.sliderWraper{
+  
+  animation: slider 7s linear infinite;
+}
+@keyframes slider {
+  0% {
+    transform: translateX(200%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+// @keyframes slider {
+//   0% {
+//     transform: translateX(100%);
+//   }
+//   100% {
+//     transform: translateX(-500%);
+//   }
+// }

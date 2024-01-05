@@ -66,15 +66,9 @@ const Home = () => {
     getSelects();
   }, [goods]);
 
-
-
-
-
   useEffect(() => {
     scrollToElement("main_page_preview");
   }, []);
-
-
 
   //нарастаюшие цифры
   ///////////////////////////////////////////////////////////////////////////////////
@@ -120,7 +114,7 @@ const Home = () => {
     });
   }
   window.addEventListener("scroll", handleScroll);
-///////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////
   return (
     <>
       {/* <div className="  flex justify-between items-center ">
@@ -149,7 +143,7 @@ const Home = () => {
         </div>
       </div> */}
       <div id="main_page_preview">
-        <div className="prewiew_mask" data-aos="fade-right" ></div>
+        <div className="prewiew_mask" data-aos="fade-right"></div>
         <div className="prewiew_left_side" data-aos="fade-left">
           <img
             src="/icons/main_Page_logo.png"
@@ -392,7 +386,50 @@ const Home = () => {
           </div>
         </div>
       </div>
-
+      <div
+        id="slider"
+        className="w-[70%] mx-auto relative  my-5 border-[#C5E500] border-solid overflow-hidden border-[2px] h-[120px] "
+      >
+        <div className="flex w-fit absolute  justify-between  items-center sliderWraper  h-full p-5 gap-10 ">
+          <div className="w-fit">
+            <img
+              src="/public/slider/slide1.png"
+              className=" max-w-[150px]"
+              alt=""
+            />
+          </div>
+          <div className="w-fit">
+            <img
+              src="/public/slider/slide2.png"
+              className=" max-w-[150px]"
+              alt=""
+            />
+          </div>
+          <div className="w-fit">
+            <img
+              src="/public/slider/slide3.webp"
+              className=" max-w-[150px] w-[100px] h-hull"
+              alt=""
+            />
+          </div>
+          <div className="w-fit">
+            <img
+              src="/public/slider/slide4.png"
+              className=" max-w-[150px]"
+              alt=""
+            />
+          </div>
+          <div className="w-fit">
+            <img
+              src="/public/slider/slide5.svg"
+              className=" max-w-[150px] "
+              alt=""
+            />
+          </div>
+     
+     
+        </div>
+      </div>
       <div id="AnyQuestionsOrderConsultation">
         <div className="AnyQuestionsMain">
           <div className="AnyQuestions">
