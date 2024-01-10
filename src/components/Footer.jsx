@@ -1,7 +1,7 @@
 
 const Footer = () => {
     return (
-        <footer className="mx-auto max-w-[2560px] ">
+        <footer className="mx-auto max-w-[1920px] ">
         <ul>
           <li>
             <h1>Каталог</h1>

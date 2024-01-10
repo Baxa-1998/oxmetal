@@ -134,7 +134,7 @@ const Layout = () => {
             </>
           ) : null}
           <Header />
-          <main className="max-w-[2560px]  mx-auto">
+          <main className="max-w-[1920px]  mx-auto">
             <Outlet />
           </main>
           <Footer />

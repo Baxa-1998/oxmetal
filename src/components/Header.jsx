@@ -13,7 +13,7 @@ const Header = () => {
   return (
     <>
       <header className=" fixed top-0  w-full bg-white z-[9997] border-b-2 border-[#DBFF00] px-5">
-        <nav className="mx-auto max-w-[2560px]  flex justify-between items-center  ">
+        <nav className="mx-auto max-w-[1920px]  flex justify-between items-center  ">
           <ul className="justify-start flex gap-5 items-center  p-5 md:w-[100%] md:justify-between ">
             <li className="hidden sm:block"></li>
             <li className="flex">

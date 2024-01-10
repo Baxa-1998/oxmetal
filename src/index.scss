@@ -505,7 +505,7 @@ main_page_container #ProductsMain {
   padding: 54px 120px 96px 120px;
 }
 
-#about_company .logo_about {
+.logo_about {
   // font-family: "Steppe";
   font-size: 53px;
   font-weight: 900;
@@ -2227,7 +2227,7 @@ main_page_container #ProductsMain {
     font-size: 24px;
   }
 
-  #about_company .logo_about {
+.logo_about {
     font-size: 24px;
   }
 
@@ -3423,18 +3423,24 @@ footer ul li h1 {
   }
 }
 .sliderWraper{
-  
-  animation: slider 7s linear infinite;
+  animation: slider 5s linear infinite;
 }
 @keyframes slider {
   0% {
-    transform: translateX(200%);
+    transform: translateX(0%);
   }
   100% {
-    transform: translateX(-100%);
+    transform: translateX(calc(-100% - 40px));
   }
 }
-
+// @keyframes slider2 {
+//   0% {
+//     transform: translateX(100%);
+//   }
+//   100% {
+//     transform: translateX(-100%);
+//   }
+// }
 // @keyframes slider {
 //   0% {
 //     transform: translateX(100%);

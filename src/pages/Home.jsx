@@ -386,48 +386,115 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <h1 className="logo_about">Наши партнеры</h1>
       <div
         id="slider"
-        className="w-[70%] mx-auto relative  my-5 border-[#C5E500] border-solid overflow-hidden border-[2px] h-[120px] "
+        className="w-[90%] mx-auto relative  my-5 border-[#C5E500] border-solid overflow-hidden border-[2px] h-[120px] "
       >
-        <div className="flex w-fit absolute  justify-between  items-center sliderWraper  h-full p-5 gap-10 ">
-          <div className="w-fit">
-            <img
-              src="/slider/slide1.png"
-              className=" max-w-[150px]"
-              alt=""
-            />
+        <div className="flex w-fit absolute  justify-between  items-center   h-full p-5 gap-10 ">
+          <div className="flex gap-10 items-center sliderWraper">
+            <div className="w-fit">
+              <img src="/slider/slide1.png" className=" max-w-[150px]" alt="" />
+            </div>
+            <div className="w-fit">
+              <img src="/slider/slide2.png" className=" max-w-[150px]" alt="" />
+            </div>
+            <div className="w-fit">
+              <img
+                src="/slider/slide3.webp"
+                className=" max-w-[150px] w-[100px] h-hull"
+                alt=""
+              />
+            </div>
+            <div className="w-fit">
+              <img src="/slider/slide4.png" className=" max-w-[150px]" alt="" />
+            </div>
+            <div className="w-fit">
+              <img
+                src="/slider/slide5.svg"
+                className=" max-w-[150px] "
+                alt=""
+              />
+            </div>
           </div>
-          <div className="w-fit">
-            <img
-              src="/slider/slide2.png"
-              className=" max-w-[150px]"
-              alt=""
-            />
+
+          <div className="flex gap-10 items-center sliderWraper">
+            <div className="w-fit">
+              <img src="/slider/slide1.png" className=" max-w-[150px]" alt="" />
+            </div>
+            <div className="w-fit">
+              <img src="/slider/slide2.png" className=" max-w-[150px]" alt="" />
+            </div>
+            <div className="w-fit">
+              <img
+                src="/slider/slide3.webp"
+                className=" max-w-[150px] w-[100px] h-hull"
+                alt=""
+              />
+            </div>
+            <div className="w-fit">
+              <img src="/slider/slide4.png" className=" max-w-[150px]" alt="" />
+            </div>
+            <div className="w-fit">
+              <img
+                src="/slider/slide5.svg"
+                className=" max-w-[150px] "
+                alt=""
+              />
+            </div>
           </div>
-          <div className="w-fit">
-            <img
-              src="/slider/slide3.webp"
-              className=" max-w-[150px] w-[100px] h-hull"
-              alt=""
-            />
+
+          <div className="flex gap-10 items-center sliderWraper">
+            <div className="w-fit">
+              <img src="/slider/slide1.png" className=" max-w-[150px]" alt="" />
+            </div>
+            <div className="w-fit">
+              <img src="/slider/slide2.png" className=" max-w-[150px]" alt="" />
+            </div>
+            <div className="w-fit">
+              <img
+                src="/slider/slide3.webp"
+                className=" max-w-[150px] w-[100px] h-hull"
+                alt=""
+              />
+            </div>
+            <div className="w-fit">
+              <img src="/slider/slide4.png" className=" max-w-[150px]" alt="" />
+            </div>
+            <div className="w-fit">
+              <img
+                src="/slider/slide5.svg"
+                className=" max-w-[150px] "
+                alt=""
+              />
+            </div>
           </div>
-          <div className="w-fit">
-            <img
-              src="/slider/slide4.png"
-              className=" max-w-[150px]"
-              alt=""
-            />
+          
+          <div className="flex gap-10 items-center sliderWraper">
+            <div className="w-fit">
+              <img src="/slider/slide1.png" className=" max-w-[150px]" alt="" />
+            </div>
+            <div className="w-fit">
+              <img src="/slider/slide2.png" className=" max-w-[150px]" alt="" />
+            </div>
+            <div className="w-fit">
+              <img
+                src="/slider/slide3.webp"
+                className=" max-w-[150px] w-[100px] h-hull"
+                alt=""
+              />
+            </div>
+            <div className="w-fit">
+              <img src="/slider/slide4.png" className=" max-w-[150px]" alt="" />
+            </div>
+            <div className="w-fit">
+              <img
+                src="/slider/slide5.svg"
+                className=" max-w-[150px] "
+                alt=""
+              />
+            </div>
           </div>
-          <div className="w-fit">
-            <img
-              src="/slider/slide5.svg"
-              className=" max-w-[150px] "
-              alt=""
-            />
-          </div>
-     
-     
         </div>
       </div>
       <div id="AnyQuestionsOrderConsultation">
