@@ -3,14 +3,12 @@ import { checkCookie } from "./functions";
 
 export function sendmessage(evt, message, message2) {
   evt.preventDefault();
-  
+
   let mes = message.current.value;
   let mes2 = message2.current.state.formattedNumber;
-  let obj = {
-    name:mes,
-    tel:mes2
-  }
-  
+  let chatId = "822604348"
+  let botToken = "6544146847:AAG8Qs8ExdWlnzo_FItxBXMt9aTaNdbKOvE"
+  const apiUrl = `https://api.telegram.org/bot${botToken}/sendMessage`;
   // Проверяем наличие cookie с именем 'myCookie'
   if (checkCookie("ChangeForm")) {
     // console.log('Cookie "myCookie" существует.');
@@ -25,22 +23,24 @@ export function sendmessage(evt, message, message2) {
       const now = new Date();
       const time = now.getTime();
       const expireTime = time + 1 * 60 * 1000; // 10 минут в миллисекундах
-      now.setTime(expireTime);
-      document.cookie = `ChangeForm=ChangeForm; expires=${now.toUTCString()}; path=/`;
-      axios
-        .post(
-          'https://oxmetall-9aef2-default-rtdb.europe-west1.firebasedatabase.app/arr.json',obj
-        )
-        .then(() => {
-          let form = document.querySelectorAll(".form-control");
-          setTimeout(() => {
-            form.forEach((i) => {
-              i.value = "+998";
-            });
-            message.current.value = "";
-            message2.current.state.formattedNumber = "+998";
-          }, 1000);
-        });
+      const message3 = `Имя: ${mes}\nНомер: ${mes2}`;
+      const params = {
+        chat_id: chatId,
+        text: message3,
+        parse_mode: "Markdown", // Указываем, что текст содержит разметку Markdown
+      };
+      axios.post(apiUrl, params).then(() => {
+        now.setTime(expireTime);
+        document.cookie = `ChangeForm=ChangeForm; expires=${now.toUTCString()}; path=/`;
+        let form = document.querySelectorAll(".form-control");
+        setTimeout(() => {
+          form.forEach((i) => {
+            i.value = "+998";
+          });
+          message.current.value = "";
+          message2.current.state.formattedNumber = "+998";
+        }, 1000);
+      });
     }
   }
 }
