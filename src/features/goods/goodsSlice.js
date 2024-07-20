@@ -30,16 +30,26 @@ export const goodsSlice = createSlice({
       .addCase(getGoodAPI.rejected, (state, action) => {
         state.status = "rejected";
       })
-      .addCase(postGoodAPI.pending, (state, action) => {
-        state.status = "loading";
+
+
+
+      .addCase(postGoodAPI.pending, (state) => {
+        state.status = 'loading';
       })
       .addCase(postGoodAPI.fulfilled, (state, action) => {
-        state.data = action.payload;
-        state.status = "fulfilled";
+        state.status = 'fulfilled';
+    
+  
+        // Add the data to the state as an array
+        state.data.push(action.payload); // Добавляем данные в массив
       })
       .addCase(postGoodAPI.rejected, (state, action) => {
-        state.status = "rejected";
+        state.status = 'rejected';
+        state.error = [];
       })
+
+
+      
       .addCase(pathGoodAPI.pending, (state, action) => {
         state.status = "loading";
       })

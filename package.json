@@ -13,6 +13,8 @@
   "dependencies": {
     "aos": "^2.3.4",
     "axios": "^1.4.0",
+    "caniuse-lite": "^1.0.30001611",
+    "firebase": "^10.8.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.10.1",
@@ -21,7 +23,8 @@
     "react-router-dom": "^6.15.0",
     "sass": "^1.65.1",
     "scss": "^0.2.4",
-    "swiper": "^10.0.0"
+    "swiper": "^10.0.0",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@reduxjs/toolkit": "^1.9.3",

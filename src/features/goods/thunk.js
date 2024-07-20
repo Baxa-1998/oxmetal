@@ -1,9 +1,17 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
+
+
+
+
+
+
 export const getGoodAPI = createAsyncThunk("goods/getGoodAPI", async () => {
+  
   const res = await axios.get(
-    "https://oxmetall-9aef2-default-rtdb.europe-west1.firebasedatabase.app/Products.json"
+
+    "https://oxmetal-49832-default-rtdb.asia-southeast1.firebasedatabase.app/Products.json"
   );
 
   return res.data;
@@ -11,8 +19,9 @@ export const getGoodAPI = createAsyncThunk("goods/getGoodAPI", async () => {
 export const postGoodAPI = createAsyncThunk(
   "goods/postGoodAPI",
   async (data) => {
+   
     const res = await axios.post(
-      "https://oxmetall-9aef2-default-rtdb.europe-west1.firebasedatabase.app/Products.json",
+      "https://oxmetal-49832-default-rtdb.asia-southeast1.firebasedatabase.app/Products.json",
       data
     );
 
@@ -21,10 +30,11 @@ export const postGoodAPI = createAsyncThunk(
 );
 export const pathGoodAPI = createAsyncThunk(
   "goods/pathGoodAPI",
-  async (data) => {
+  async (data) => { 
+    console.log(data); 
     const res = await axios.patch(
-      "http://localhost:3001/goods/" + data.id,
-      data.path
+      "https://oxmetal-49832-default-rtdb.asia-southeast1.firebasedatabase.app/Products/-NsHNN90I1nWU6QkydOP.json",data
+   
     );
 
     return res.data;

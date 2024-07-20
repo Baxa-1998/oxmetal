@@ -142,6 +142,8 @@
 }
 
 .Goods_item .Optins img {
+  width: 30px;
+  height: 32px;
   cursor: pointer;
 }
 .CreateColors {
@@ -831,6 +833,8 @@ main_page_container #ProductsMain {
 }
 .form-control {
   outline: none;
+  width: 100%;
+  height: 100%;
 }
 #AnyQuestionsOrderConsultation
   .OrderConsultationMain

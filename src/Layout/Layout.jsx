@@ -9,16 +9,18 @@ import Footer from "../components/Footer";
 import Loading from "../components/Loading";
 import { sendmessage } from "../../utils/sendTgBot";
 import { checkCookie } from "../../utils/functions";
+import { AuthCTX } from "../contexts/Auth";
 
 const Layout = () => {
   const goods = useSelector((state) => state.goods.data);
+  const newArr = Object.values(goods)
   const Load = useSelector((state) => state.goods.status);
   const [OpenModal, setOpenModal] = useState(false);
   const [CheckForm, setCheckForm] = useState(false);
   const [CheckCokkie, setCheckCokkie] = useState(false);
   const dispatch = useDispatch();
   useEffect(() => {
-    if (!goods.length || Load === "idle") {
+    if (!newArr.length || Load === "idle") {
       dispatch(getGoodAPI());
     }
   }, [dispatch, goods]);
@@ -39,6 +41,7 @@ const Layout = () => {
   } else if (Load === "fulfilled") {
     return (
       <>
+     
         <Modal.Provider value={{ setOpenModal, OpenModal }}>
           {OpenModal ? (
             <>

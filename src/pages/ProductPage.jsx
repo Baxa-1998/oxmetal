@@ -1,57 +1,47 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useContext, useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
-import SwiperCore from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
+import React, { useContext, useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { Link, useParams } from 'react-router-dom';
+import SwiperCore from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
-import "swiper/css";
-import "swiper/css/free-mode";
-import "swiper/css/navigation";
-import "swiper/css/thumbs";
-import "swiper/css/pagination";
-import "./styles.css";
+import 'swiper/css';
+import 'swiper/css/free-mode';
+import 'swiper/css/navigation';
+import 'swiper/css/thumbs';
+import 'swiper/css/pagination';
+import './styles.css';
 
-import { FreeMode, Navigation, Thumbs, Pagination } from "swiper/modules";
-import { Modal } from "../contexts/Modal";
-import { scrollToElement } from "../../utils/functions";
-import Calculator from "../components/Calculator";
+import { FreeMode, Navigation, Thumbs, Pagination } from 'swiper/modules';
+import { Modal } from '../contexts/Modal';
+import { scrollToElement } from '../../utils/functions';
+import Calculator from '../components/Calculator';
 
 SwiperCore.use([Pagination]);
 
 const ProductPage = () => {
   let { ProductId } = useParams();
+  console.log(ProductId);
   const goods = useSelector((state) => state.goods.data);
+  const newArr = Object.values(goods);
   const [Prodict, setProdict] = useState([]);
   const [ProductItem, setProductItem] = useState({});
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
-  const [RAl, setRAl] = useState("");
+  const [RAl, setRAl] = useState('');
   const [Coating, setCoating] = useState([]);
   const [Sizes, setSizes] = useState([]);
   const { OpenModal, setOpenModal } = useContext(Modal);
-  const {
-    material,
-    tipes,
-    coating,
-    color,
-    sizes,
-    view,
-    price,
-    Guarantee,
-    name,
-    blueprint,
-  } = ProductItem;
+  const { material, tipes, coating, color, sizes, view, price, Guarantee, name, blueprint } =
+    ProductItem;
   useEffect(() => {
-    if (goods.length > 0) {
-      setProdict([...goods.filter((i) => i.key == ProductId)]);
-      setProductItem([...goods.filter((i) => i.key == ProductId)][0]);
+    if (newArr.length > 0) {
+      setProdict([...newArr.filter((i) => i.key == ProductId)]);
+      setProductItem([...newArr.filter((i) => i.key == ProductId)][0]);
 
-      let arr = goods.filter(
-        (i) => i.material === material && i.tipes === tipes
-      );
+      let arr = newArr.filter((i) => i.material === material && i.tipes === tipes);
       let Uniq = [];
       for (let coat of arr) {
-        Uniq.push(coat["coating"]);
+        Uniq.push(coat['coating']);
       }
       Uniq = [...new Set(Uniq)];
       let newFillCoat = [];
@@ -61,30 +51,20 @@ const ProductPage = () => {
         newFillCoat.push(it);
       }
       setCoating([...newFillCoat]);
-      let filSizes = goods.filter(
+      let filSizes = newArr.filter(
         (item) =>
           item.coating === coating &&
           item.material === material &&
           item.view === view &&
           item.tipes === tipes &&
-          item.name === name
+          item.name === name,
       );
       setSizes([...filSizes]);
     }
-  }, [
-    ProductId,
-    coating,
-    goods,
-    material,
-    name,
-    tipes,
-    view,
-    ProductItem,
-    RAl,
-  ]);
+  }, [ProductId, coating, goods, material, name, tipes, view, ProductItem, RAl]);
 
   const pagination = {
-    el: ".CreateColors",
+    el: '.CreateColors',
     clickable: true,
     renderBullet: function (index, className) {
       return `<div class="${className} " style = "background-color: ${color[index]?.color} ;  display: block !important ;   box-shadow: 0px 1px 5px black; " name="${color[index].name}"  > <p class="ralColor">${color[index].RGBA}</p> </div> `;
@@ -101,9 +81,8 @@ const ProductPage = () => {
   };
 
   useEffect(() => {
-    scrollToElement("product");
+    scrollToElement('product');
   }, []);
-
 
   return (
     <div id="product" className=" bg-[#F2F2F2] py-[100px] px-[5%]">
@@ -111,46 +90,44 @@ const ProductPage = () => {
         <>
           <h1 className="lg:text-2xl text-4xl font-bold ">{material}</h1>
           <p>
-            <Link className="hover:text-[#C5E500]" to={"/"}>
+            <Link className="hover:text-[#C5E500]" to={'/'}>
               Главная
-            </Link>{" "}
-            /{" "}
-            <Link className="hover:text-[#C5E500]" to={"/catalog"}>
+            </Link>{' '}
+            /{' '}
+            <Link className="hover:text-[#C5E500]" to={'/catalog'}>
               Каталог
-            </Link>{" "}
-            /{" "}
+            </Link>{' '}
+            /{' '}
             <Link
               className="hover:text-[#C5E500]"
               onClick={() => {
-                localStorage.setItem("fillGood", Prodict[0].material);
+                localStorage.setItem('fillGood', Prodict[0].material);
               }}
-              to={"/catalog"}
-            >
+              to={'/catalog'}>
               {Prodict[0].material}
-            </Link>{" "}
-            /{" "}
+            </Link>{' '}
+            /{' '}
             <Link
               className="hover:text-[#C5E500]"
               onClick={() => {
-                localStorage.setItem("fillGood", Prodict[0].material);
-                localStorage.setItem("fillGoodProfile", Prodict[0].tipes);
+                localStorage.setItem('fillGood', Prodict[0].material);
+                localStorage.setItem('fillGoodProfile', Prodict[0].tipes);
               }}
-              to={"/catalog"}
-            >
+              to={'/catalog'}>
               {Prodict[0].tipes}
             </Link>
           </p>
           <h1 className="text-4xl font-bold mt-5 lg:text-2xl">
-            {material} {tipes} ({coating}-
-            <span>{color.length === 1 ? color[0].RGBA : RAl}</span>-{sizes})
+            {material} {tipes} ({coating}-<span>{color.length === 1 ? color[0].RGBA : RAl}</span>-
+            {sizes})
           </h1>
           <div className="flex gap-8 mt-5 relative lg:flex-col pb-10">
             <div className="w-1/2 lg:w-full h-fit sticky lg:static top-[100px]  left-0">
               <div className="">
                 <Swiper
                   style={{
-                    "--swiper-navigation-color": "#fff",
-                    "--swiper-pagination-color": "#fff",
+                    '--swiper-navigation-color': '#fff',
+                    '--swiper-pagination-color': '#fff',
                   }}
                   spaceBetween={10}
                   navigation={true}
@@ -159,8 +136,7 @@ const ProductPage = () => {
                   pagination={pagination}
                   className="mySwiper2 exl:max-h-[500px]"
                   onSlideChange={handleSlideChange}
-                  onSwiper={handleItemClick}
-                >
+                  onSwiper={handleItemClick}>
                   {color.map((item, idx) => (
                     <SwiperSlide key={idx} className="h-full">
                       <img src={item.src} className=" object-cover" />
@@ -175,8 +151,7 @@ const ProductPage = () => {
                   freeMode={true}
                   watchSlidesProgress={true}
                   modules={[FreeMode, Navigation, Thumbs]}
-                  className="mySwiper max-h-[500px] "
-                >
+                  className="mySwiper max-h-[500px] ">
                   {color.map((item, idx) => (
                     <SwiperSlide key={idx}>
                       <img src={item.src} />
@@ -187,9 +162,9 @@ const ProductPage = () => {
               <div className="flex  gap-[21px]">
                 <img src="/alert-triangle.svg" alt="" />
                 <p className=" text-sm text-[#6A6A6A] font-bold sm:text-xs">
-                  Цвета на экране монитора, а также детали внешнего вида
-                  кровельного материала могут мотличаться от реальных. Наличие
-                  конкретных цветов и профилей запрашивайте у дилеров.
+                  Цвета на экране монитора, а также детали внешнего вида кровельного материала могут
+                  мотличаться от реальных. Наличие конкретных цветов и профилей запрашивайте у
+                  дилеров.
                 </p>
               </div>
               {blueprint.length > 0 ? (
@@ -214,19 +189,17 @@ const ProductPage = () => {
                 <div className="coatingCont">
                   {Coating.map((item, idx) => (
                     <Link
-                      to={"/product/" + item.key}
+                      to={'/product/' + item.key}
                       key={item.coating + idx + item.idx}
                       onClick={() => {
                         handleItemClick();
-                      }}
-                    >
+                      }}>
                       <span
                         className={
                           item.coating === coating
-                            ? "details_size details_sizeActive"
-                            : "details_size"
-                        }
-                      >
+                            ? 'details_size details_sizeActive'
+                            : 'details_size'
+                        }>
                         {item.coating}
                       </span>
                     </Link>
@@ -242,13 +215,13 @@ const ProductPage = () => {
               </div>
               <div className=" text-xl font-bold mt-5">
                 <p>
-                  Цена:{" "}
+                  Цена:{' '}
                   <span className="font-medium">
                     {price === 0 ? (
-                      "Цена по запросу"
+                      'Цена по запросу'
                     ) : (
                       <>
-                        {price.toLocaleString("ru-RU")} сум/м<sup>2</sup>
+                        {price.toLocaleString('ru-RU')} сум/м<sup>2</sup>
                       </>
                     )}
                   </span>
@@ -268,19 +241,15 @@ const ProductPage = () => {
                 <div className="coatingCont">
                   {Sizes.map((item, idx) => (
                     <Link
-                      to={"/product/" + item.key}
+                      to={'/product/' + item.key}
                       key={item.sizes + idx + item.idx}
                       onClick={() => {
-                        scrollToElement("product");
-                      }}
-                    >
+                        scrollToElement('product');
+                      }}>
                       <span
                         className={
-                          item.sizes === sizes
-                            ? "details_size details_sizeActive"
-                            : "details_size"
-                        }
-                      >
+                          item.sizes === sizes ? 'details_size details_sizeActive' : 'details_size'
+                        }>
                         {item.sizes}
                       </span>
                     </Link>
@@ -292,16 +261,13 @@ const ProductPage = () => {
                 onClick={() => {
                   setOpenModal(true);
                 }}
-                className="consultation"
-              >
+                className="consultation">
                 <img src="/icons/phone.svg" alt="" />
                 <p>КОНСУЛЬТАЦИЯ</p>
               </button>
             </div>
           </div>
-          {
-            price > 0 ? <Calculator product={ProductItem}/> : null
-          }
+          {price > 0 ? <Calculator product={ProductItem} /> : null}
         </>
       ) : null}
     </div>

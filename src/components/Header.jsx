@@ -1,12 +1,12 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useContext, useState } from "react";
-import { AiOutlineClose, AiOutlineMail, AiOutlineSearch, AiOutlineMenu } from "react-icons/ai";
+import React, { useContext, useState } from 'react';
+import { AiOutlineClose, AiOutlineMail, AiOutlineSearch, AiOutlineMenu } from 'react-icons/ai';
 // import { AiOutlineMenu } from "react-icons/ai";
-import { BsTelephone } from "react-icons/bs";
-import { FaMapMarkerAlt } from "react-icons/fa";
+import { BsTelephone } from 'react-icons/bs';
+import { FaMapMarkerAlt } from 'react-icons/fa';
 
-import { Link } from "react-router-dom";
-import { Modal } from "../contexts/Modal";
+import { Link } from 'react-router-dom';
+import { Modal } from '../contexts/Modal';
 const Header = () => {
   const [Burger, setBurger] = useState(false);
   const { setOpenModal } = useContext(Modal);
@@ -17,22 +17,21 @@ const Header = () => {
           <ul className="justify-start flex gap-5 items-center  p-5 md:w-[100%] md:justify-between ">
             <li className="hidden sm:block"></li>
             <li className="flex">
-              <Link to={"/"}>
+              <Link to={'/'}>
                 <img src="/logo.svg" alt="" />
               </Link>
-              <Link to={"/search"}>
-              <div className=" py-1 px-2 cursor-pointer w-fit bg-[#C5E500] ml-5  rounded-full flex items-center gap-3  sm:hidden ">
-                <AiOutlineSearch className="text-white text-[25px]" />
-                {/* <p>Поиск по товарам</p> */}
-                {/* <input
+              <Link to={'/search'}>
+                <div className=" py-1 px-2 cursor-pointer w-fit bg-[#C5E500] ml-5  rounded-full flex items-center gap-3  sm:hidden ">
+                  <AiOutlineSearch className="text-white text-[25px]" />
+                  {/* <p>Поиск по товарам</p> */}
+                  {/* <input
                 type="text"
                 className="outline-none"
                 placeholder="Поиск по товарам"
               /> */}
-              </div>
-            </Link>
+                </div>
+              </Link>
             </li>
-            
 
             <li className="hidden md:block">
               {Burger ? (
@@ -53,9 +52,18 @@ const Header = () => {
             </li>
           </ul>
           <ul className="flex items-center gap-5">
+            {/* <Link to='/admin/control'>
+
+            <li>Админка</li>
+            </Link> */}
+         
             <li className=" md:hidden text-[14px] leading-[14px] font-[500]">
-              <Link to={"/catalog"} className=" hover:text-[#C5E500]"> Каталог Продукции</Link>
+              <Link to={'/catalog'} className=" hover:text-[#C5E500]">
+                {' '}
+                Каталог Продукции
+              </Link>
             </li>
+
             {/* <li className=" md:hidden">
               <select name="" id="">
                 <option value="ru">ru</option>
@@ -67,8 +75,7 @@ const Header = () => {
                 onClick={() => {
                   setOpenModal(true);
                 }}
-                className="flex py-[10px] button px-[30px] cursor-pointer"
-              >
+                className="flex py-[10px] button px-[30px] cursor-pointer">
                 КОНСУЛЬТАЦИЯ
               </div>
             </li>
@@ -87,20 +94,19 @@ const Header = () => {
             <div className=" flex flex-col items-center gap-5 p-5 md:w-[100%] md:justify-between ">
               <div className="hidden sm:block"></div>
               <div>
-                <Link to={"/"}>
+                <Link to={'/'}>
                   <img src="/logo.svg" alt="" />
                 </Link>
               </div>
-              <Link to={"/search"}>
+              <Link to={'/search'}>
                 <li className=" py-3 px-3 cursor-pointer  flex items-center gap-3    ">
                   <AiOutlineSearch className="text-[#C5E500] text-[25px]" />
                   <p>Поиск</p>
-           
                 </li>
               </Link>
               <div className="  flex flex-col items-center gap-5 mt-7">
                 <div className=" text-[14px] leading-[14px] font-[500]">
-                  <Link to={"/catalog"}> Каталог Продукции</Link>
+                  <Link to={'/catalog'}> Каталог Продукции</Link>
                 </div>
                 {/* <div className=" flex gap-2 ">
                   <p>Язык:</p>
@@ -115,8 +121,7 @@ const Header = () => {
                       setOpenModal(true);
                       setBurger(false);
                     }}
-                    className="flex py-[10px] button px-[30px]"
-                  >
+                    className="flex py-[10px] button px-[30px]">
                     КОНСУЛЬТАЦИЯ
                   </div>
                 </div>

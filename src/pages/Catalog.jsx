@@ -9,7 +9,9 @@ import { scrollToElement } from "../../utils/functions";
 
 const Catalog = () => {
   const goods = useSelector((state) => state.goods.data);
-  const [FillGoods, setFillGoods] = useState([...goods]);
+  const newArr = Object.values(goods) 
+
+  const [FillGoods, setFillGoods] = useState([...newArr]);
   const uniqueColors = [];
   const uniqueTypes = [];
   const uniqueMaterials = [];
@@ -17,7 +19,7 @@ const Catalog = () => {
   const [ActiveTypes, setActiveTypes] = useState("");
   const [ActiveColors, setActiveColors] = useState("");
   const [Count, setCount] = useState(6);
-  goods.forEach((item) => {
+  newArr.forEach((item) => {
     item.color.forEach((color) => {
       const existingColor = uniqueColors.find(
         (uniqueColor) => uniqueColor.name === color.name
@@ -38,7 +40,7 @@ const Catalog = () => {
  
   useEffect(() => {
     if(localStorage.getItem("fillGood")){
-      setFillGoods([...goods.filter(i => i.material == localStorage.getItem("fillGood"))]);
+      setFillGoods([...newArr.filter(i => i.material == localStorage.getItem("fillGood"))]);
       setActiveMaterial(localStorage.getItem("fillGood"))
       if(localStorage.getItem("fillGoodProfile")){
         setActiveTypes(localStorage.getItem("fillGoodProfile"))
@@ -47,7 +49,7 @@ const Catalog = () => {
         localStorage.clear()
       } , 3000)
     }else{
-      setFillGoods([...goods]);
+      setFillGoods([...newArr]);
     }
 
   
@@ -58,7 +60,7 @@ const Catalog = () => {
       ActiveTypes.length > 0 ||
       ActiveColors.length > 0
     ) {
-      let copGoods = [...goods];
+      let copGoods = [...newArr];
       if (ActiveMaterial.length > 0) {
         copGoods = copGoods.filter((item) => item.material === ActiveMaterial);
       }
@@ -190,7 +192,7 @@ const Catalog = () => {
                   setActiveMaterial("");
                   setActiveTypes("");
                   setActiveColors("");
-                  setFillGoods([...goods]);
+                  setFillGoods([...newArr]);
                 }}
                 id="CancelFillter"
               >

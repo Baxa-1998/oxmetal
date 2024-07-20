@@ -9,8 +9,8 @@ Token = '6544146847:AAG8Qs8ExdWlnzo_FItxBXMt9aTaNdbKOvE'
 # Создаем объект бота
 bot = telebot.TeleBot(Token)
 
-url_item = 'https://oxmetall-9aef2-default-rtdb.europe-west1.firebasedatabase.app/id.json'
-url_arr = 'https://oxmetall-9aef2-default-rtdb.europe-west1.firebasedatabase.app/arr.json'
+url_item = 'https://oxmetal-49832-default-rtdb.asia-southeast1.firebasedatabase.app/id.json'
+url_arr = 'https://oxmetal-49832-default-rtdb.asia-southeast1.firebasedatabase.app/arr.json'
 
 
 # Обработчик команды /start

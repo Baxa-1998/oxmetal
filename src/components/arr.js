@@ -39,6 +39,21 @@ let prof = [
   "corrugated wall cladding",
   "roofing building material",
 ]
+
+export const coat = [
+  "ПЭ", 
+  "Valori", 
+  "Agneta", 
+  "EcoSteel", 
+  "VikingMP",
+  "VikingMP L",
+  "NormanMP",
+  "ПЭ-МА",
+  "Valori",
+  "Оцинкованный",
+
+]
+
 let metal =[  
   //Металлочерепица
   "кровельные материалы ",
@@ -56,73 +71,150 @@ let voda =[
 
 
 
-let aaa = [
+export const aaa = [
   {
     "Guarantee": 5,
     "blueprint": "/blueprints/chertez-metalochereoiza.jpg",
     "calcwidth": 1.19,
     "coating": "ПЭ",
     "color": [
-      {
+      { 
+        "id": 1,
         "RGBA": "3005",
         "color": "#5E2028",
         "name": "3005",
         "src": "/profimg/lamanterra/lamanterra_3005.jpg"
       },
       {
+        "id": 2,
         "RGBA": "5005",
         "color": "#154889",
         "name": "5005",
         "src": "/profimg/lamanterra/lamanterra_5005.jpeg"
       },
       {
+        "id": 3,
         "RGBA": "1015",
         "color": "#EADEBD",
         "name": "1015",
         "src": "/profimg/lamanterra/lamanterra_1015.jpeg"
       },
       {
+        "id": 4,
         "RGBA": "6005",
         "color": "#0F4336",
         "name": "6005",
         "src": "/profimg/lamanterra/lamanterra_6005.jpeg"
       },
       {
+        "id": 5,
         "RGBA": "7004",
         "color": "#9EA0A1",
         "name": "7004",
         "src": "/profimg/lamanterra/lamanterra_7004.jpeg"
       },
       {
+        "id": 6,
         "RGBA": "7024",
         "color": "#474A50",
         "name": "7024",
         "src": "/profimg/lamanterra/lamanterra_7024.jpeg"
       },
       {
+        "id": 7,
         "RGBA": "8017",
         "color": "#44322D",
         "name": "8017",
         "src": "/profimg/lamanterra/lamanterra_8017.jpeg"
       },
       {
+        "id": 8, 
         "RGBA": "9002",
         "color": "#E7EBDA",
         "name": "9002",
         "src": "/profimg/lamanterra/lamanterra_9002.jpg"
       },
-      {
+      { 
+        "id": 9, 
         "RGBA": "9003",
         "color": "#F4F4F4",
         "name": "9003",
         "src": "/profimg/lamanterra/lamanterra_9003.jpeg"
       },
       {
+        "id": 10,  
         "RGBA": "9006",
         "color": "#A5A5A5",
         "name": "9006",
         "src": "/profimg/lamanterra/lamanterra_7004.jpeg"
-      }
+      },
+      {
+        
+          "id": 11,
+          "RGBA": "Violet",
+  "color": "#8A5A83",
+  "name": "Violet",
+  "src": "/profimg/lamanterra/lamanterra_violet.jpeg" 
+        
+      },
+      {
+        "id": 12,
+        "RGBA": "Copper",
+        "color": "#7f4031",
+        "name": "Copper",
+        "src": "/profimg/mp-20/mp20_cooper.jpg"
+      },
+
+      {
+        "id": 13,
+        "RGBA": "ЦВ",
+        "color": "#f7c5d9",
+        "name": "ЦВ",
+        "src": "/profimg/vor.jpg"
+      },
+      {
+        "id": 14,
+        "RGBA": "8002",
+        "color": "#BAB8B5",
+        "name": "Цинк",
+        "src": "/profimg/h-75/h75_zinc.jpg"
+      },
+      {
+        "id": 15,
+        "RGBA": "Золотой Дуб",
+        "color": "#80542F",
+        "name": "Золотой Дуб",
+        "src": "/profimg/c8/c8_ral_golden-oak.jpg"
+      },
+      {
+        "id": 16,
+        "RGBA": "Мореный  Дуб",
+        "color": "#6a584d",
+        "name": "Мореный Дуб",
+        "src": "/profimg/c8/c8_ral_mor_dub.jpg"
+      },
+      {
+        "id": 17,
+        "RGBA": "6007",
+        "color": "#283424",
+        "name": "6007",
+        "src": "/profimg/lamanterra/lamanterra_6007.jpg"
+      },
+      {
+        "id" :18,
+        "RGBA": "8004",
+        "color": "#8F4E35",
+        "name": "8004",
+        "src": "/profimg/lamanterra/lamanterra_8004.jpeg"
+      },
+      {
+        "id" :19,
+        "RGBA": "8019",
+        "color": "#3F3A3A",
+        "name": "8019",
+        "src": "/profimg/lamanterra/lamanterra_8019.jpeg"
+      },
+      
     ],
     "id": 0,
     "key": "-NchDq6Q8F7W-v_SziWh",
@@ -255,6 +347,7 @@ let aaa = [
         "name": "3005",
         "src": "/profimg/lamanterra/lamanterra_3005.jpg"
       }
+
     ],
     "id": 3,
     "img": "/profimg/lamanterra/lamanterra_7024.jpeg",
@@ -285,6 +378,13 @@ let aaa = [
         "color": "#44322D",
         "name": "8017",
         "src": "/profimg/lamanterra/lamanterra_8017.jpeg"
+      },
+      {
+        
+"RGBA": "Violet",
+"color": "#8A5A83",
+"name": "Violet",
+"src": "/profimg/lamanterra/lamanterra_violet.jpeg"
       }
     ],
     "id": 6,

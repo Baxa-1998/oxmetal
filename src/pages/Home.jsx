@@ -1,22 +1,24 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useContext, useEffect, useRef, useState } from "react";
-import ProductCart from "../components/ProductCart";
-import { useSelector } from "react-redux";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/free-mode";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import { FreeMode, Pagination, Navigation } from "swiper/modules";
-import { Link, useNavigate } from "react-router-dom";
-import { Modal } from "../contexts/Modal";
-import PhoneInput from "react-phone-input-2";
-import axios from "axios";
-import { sendmessage } from "../../utils/sendTgBot";
-import { checkCookie, scrollToElement } from "../../utils/functions";
+import React, { useContext, useEffect, useRef, useState } from 'react';
+import ProductCart from '../components/ProductCart';
+import { useSelector } from 'react-redux';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/free-mode';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import { FreeMode, Pagination, Navigation } from 'swiper/modules';
+import { Link, useNavigate } from 'react-router-dom';
+import { Modal } from '../contexts/Modal';
+import PhoneInput from 'react-phone-input-2';
+import axios from 'axios';
+import { sendmessage } from '../../utils/sendTgBot';
+import { checkCookie, scrollToElement } from '../../utils/functions';
 
 const Home = () => {
   const goods = useSelector((state) => state.goods.data);
+  const newArr = Object.values(goods);
+
   const { OpenModal, setOpenModal } = useContext(Modal);
   const [SelectArr, setSelectArr] = useState([]);
   const [SelectIdx, setSelectIdx] = useState(0);
@@ -33,14 +35,15 @@ const Home = () => {
         new_arr.push(item[key]);
       }
     }
-    create_category(goods, "view", View);
+    create_category(newArr, 'view', View);
+    console.log(newArr);
     View = [...new Set(View)];
     let ProductsArr = [];
 
     function getSelects() {
       for (let view of View) {
-        let fillSelectMater = goods.filter(
-          (item) => item.view.toLowerCase() === view.toLowerCase()
+        let fillSelectMater = newArr.filter(
+          (item) => item.view.toLowerCase() === view.toLowerCase(),
         );
         let materObj = [];
         for (let mater of fillSelectMater) {
@@ -50,9 +53,7 @@ const Home = () => {
           });
         }
         const table = {};
-        const res = materObj.filter(
-          ({ name }) => !table[name] && (table[name] = 1)
-        );
+        const res = materObj.filter(({ name }) => !table[name] && (table[name] = 1));
         ProductsArr.push({
           type: view,
           img: fillSelectMater[0].viewImg,
@@ -64,10 +65,10 @@ const Home = () => {
     }
 
     getSelects();
-  }, [goods]);
+  }, []);
 
   useEffect(() => {
-    scrollToElement("main_page_preview");
+    scrollToElement('main_page_preview');
   }, []);
 
   //нарастаюшие цифры
@@ -96,24 +97,24 @@ const Home = () => {
     return (
       rect.top >= 0 &&
       rect.left >= 0 &&
-      rect.bottom <=
-        (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
       rect.right <= (window.innerWidth || document.documentElement.clientWidth)
     );
   }
+
   function handleScroll() {
-    var animatedElements = document.querySelectorAll(".numbers");
+    var animatedElements = document.querySelectorAll('.numbers');
     animatedElements.forEach(function (element) {
       if (isElementInViewport(element)) {
-        numbers(1500, "chislo1", 30);
-        numbers(27147, "chislo2", 140);
-        numbers(50, "chislo3", 1);
-        numbers(20, "chislo4", 1);
+        numbers(1500, 'chislo1', 30);
+        numbers(27147, 'chislo2', 140);
+        numbers(50, 'chislo3', 1);
+        numbers(20, 'chislo4', 1);
         s = true;
       }
     });
   }
-  window.addEventListener("scroll", handleScroll);
+  window.addEventListener('scroll', handleScroll);
   ///////////////////////////////////////////////////////////////////////////////////
   return (
     <>
@@ -145,35 +146,23 @@ const Home = () => {
       <div id="main_page_preview">
         <div className="prewiew_mask" data-aos="fade-right"></div>
         <div className="prewiew_left_side" data-aos="fade-left">
-          <img
-            src="/icons/main_Page_logo.png"
-            className="main_page_logo"
-            alt=""
-          />
+          <img src="/icons/main_Page_logo.png" className="main_page_logo" alt="" />
           <h1>СТРОЙ ЖИЗНЬ С КАЧЕСТВОМ</h1>
 
-          <p>
-            Ведущая компания в Узбекистане по поставкам кровельных и фасадных
-            систем.
-          </p>
+          <p>Ведущая компания в Узбекистане по поставкам кровельных и фасадных систем.</p>
         </div>
       </div>
-      <div
-        id="GoTOCatalog"
-        className="flex w-full h-[450px] sm:h-fit justify-between"
-      >
+      <div id="GoTOCatalog" className="flex w-full h-[450px] sm:h-fit justify-between">
         <div className=" w-[30%] sm:w-full h-full flex flex-col gap-4 items-center justify-center">
           <p className="leading-[120%] lg:text-2xl font-black text-center text-[53px] w-fit">
             ЧТО ВЫ <wbr /> ИЩИТЕ?
           </p>
-          <Link to={"/catalog"}>
-            <div className="flex py-[15px] w-fit text-base font-bold button px-[60px]">
-              КАТАЛОГ
-            </div>
+          <Link to={'/catalog'}>
+            <div className="flex py-[15px] w-fit text-base font-bold button px-[60px]">КАТАЛОГ</div>
           </Link>
         </div>
         <div className="flex items-start gap-5 w-[60%] sm:w-full    py-5  h-full">
-          {goods.length > 0 ? (
+          {newArr.length > 0 ? (
             <Swiper
               style={
                 {
@@ -218,15 +207,11 @@ const Home = () => {
               freeMode={true}
               navigation={true}
               modules={[FreeMode, Navigation, Pagination]}
-              className=" h-full  w-fit"
-            >
-              {goods.map((item, idx) => (
+              className=" h-full  w-fit overflow-hidden">
+              {newArr.map((item, idx) => (
                 <SwiperSlide key={idx}>
-                  {" "}
-                  <ProductCart
-                    Product={item}
-                    idx={Math.floor(Math.random() * item.color.length)}
-                  />
+                  {' '}
+                  <ProductCart Product={item} idx={Math.floor(Math.random() * item.color.length)} />
                 </SwiperSlide>
               ))}
             </Swiper>
@@ -246,14 +231,11 @@ const Home = () => {
                       onClick={() => {
                         setSelectIdx(idx);
                       }}
-                      key={item.type + idx}
-                    >
+                      key={item.type + idx}>
                       <div className="SelectsImg">
                         <img
                           className={
-                            SelectIdx == idx
-                              ? "SelectsImgBg SelectsImgBgActive "
-                              : "SelectsImgBg  "
+                            SelectIdx == idx ? 'SelectsImgBg SelectsImgBgActive ' : 'SelectsImgBg  '
                           }
                           src="/icons/Star 7.svg"
                           alt=""
@@ -271,12 +253,11 @@ const Home = () => {
             {SelectArr.length > 0
               ? SelectArr[SelectIdx].arr.map((item, idx) => (
                   <Link
-                    to={"/catalog"}
+                    to={'/catalog'}
                     onClick={() => {
-                      localStorage.setItem("fillGood", item.name);
+                      localStorage.setItem('fillGood', item.name);
                     }}
-                    key={item.name + idx}
-                  >
+                    key={item.name + idx}>
                     <div className="ProductsCreateOptionsElem ">
                       <img src={item.icon} alt="" />
                       <p>{item.name}</p>
@@ -330,57 +311,38 @@ const Home = () => {
         </div>
         <div className="about_company_pros">
           <div className="about_company_pros_top">
-            <div
-              className="pros_item"
-              data-aos="fade-down"
-              data-aos-duration="1000"
-            >
+            <div className="pros_item" data-aos="fade-down" data-aos-duration="1000">
               <img src="./img/aboutImg2.svg" width="73px" alt="" />
               <h1>Быстрая доставка</h1>
               <p>
-                В крупных городах работают филиалы компании. Некоторые заказы
-                можно забрать напрямую со склада или мы доставим на терминал ТК.
+                В крупных городах работают филиалы компании. Некоторые заказы можно забрать напрямую
+                со склада или мы доставим на терминал ТК.
               </p>
             </div>
-            <div
-              className="pros_item"
-              data-aos="fade-down"
-              data-aos-duration="1000"
-            >
+            <div className="pros_item" data-aos="fade-down" data-aos-duration="1000">
               <img src="./img/aboutImg1.svg" width="73px" alt="" />
               <h1>Выгодное сотрудничество</h1>
               <p>
-                Мы нацелены на долгое сотрудничество с клиентами и партнерами,
-                поэтому создаем максимально комфортные условия для совместной
-                работы.
+                Мы нацелены на долгое сотрудничество с клиентами и партнерами, поэтому создаем
+                максимально комфортные условия для совместной работы.
               </p>
             </div>
           </div>
           <div className="about_company_pros_bottom">
-            <div
-              className="pros_item"
-              data-aos="fade-up"
-              data-aos-duration="1000"
-            >
+            <div className="pros_item" data-aos="fade-up" data-aos-duration="1000">
               <img src="/icons/aboutImg4.svg" width="73px" alt="" />
               <h1>Индивидуальная цена</h1>
               <p>
-                Снизим цену специально для Вас! Мы следим за ценами и удерживаем
-                конкурентные. Для постоянных партнеров присутствует скидка на
-                дальнейшие заказы.
+                Снизим цену специально для Вас! Мы следим за ценами и удерживаем конкурентные. Для
+                постоянных партнеров присутствует скидка на дальнейшие заказы.
               </p>
             </div>
-            <div
-              className="pros_item"
-              data-aos="fade-up"
-              data-aos-duration="1000"
-            >
+            <div className="pros_item" data-aos="fade-up" data-aos-duration="1000">
               <img src="./img/aboutImg3.svg" width="73px" alt="" />
               <h1>Высокое качество</h1>
               <p>
-                Ведущая компания по решениям фасадных и кровельных систем.
-                Офицальная гарантия на каждую продукцую. По современным
-                Российским технологияи и ГОСТ-стандартам
+                Ведущая компания по решениям фасадных и кровельных систем. Офицальная гарантия на
+                каждую продукцую. По современным Российским технологияи и ГОСТ-стандартам
               </p>
             </div>
           </div>
@@ -389,8 +351,7 @@ const Home = () => {
       <h1 className="logo_about">Наши партнеры</h1>
       <div
         id="slider"
-        className="w-[90%] mx-auto relative  my-5 border-[#C5E500] border-solid overflow-hidden border-[2px] h-[120px] "
-      >
+        className="w-[90%] mx-auto relative  my-5 border-[#C5E500] border-solid overflow-hidden border-[2px] h-[120px] ">
         <div className="flex w-fit absolute  justify-between  items-center   h-full p-5 gap-10 ">
           <div className="flex gap-10 items-center sliderWraper">
             <div className="w-fit">
@@ -400,21 +361,13 @@ const Home = () => {
               <img src="/slider/slide2.png" className=" max-w-[150px]" alt="" />
             </div>
             <div className="w-fit">
-              <img
-                src="/slider/slide3.webp"
-                className=" max-w-[150px] w-[100px] h-hull"
-                alt=""
-              />
+              <img src="/slider/slide3.webp" className=" max-w-[150px] w-[100px] h-hull" alt="" />
             </div>
             <div className="w-fit">
               <img src="/slider/slide4.png" className=" max-w-[150px]" alt="" />
             </div>
             <div className="w-fit">
-              <img
-                src="/slider/slide5.svg"
-                className=" max-w-[150px] "
-                alt=""
-              />
+              <img src="/slider/slide5.svg" className=" max-w-[150px] " alt="" />
             </div>
           </div>
 
@@ -426,21 +379,13 @@ const Home = () => {
               <img src="/slider/slide2.png" className=" max-w-[150px]" alt="" />
             </div>
             <div className="w-fit">
-              <img
-                src="/slider/slide3.webp"
-                className=" max-w-[150px] w-[100px] h-hull"
-                alt=""
-              />
+              <img src="/slider/slide3.webp" className=" max-w-[150px] w-[100px] h-hull" alt="" />
             </div>
             <div className="w-fit">
               <img src="/slider/slide4.png" className=" max-w-[150px]" alt="" />
             </div>
             <div className="w-fit">
-              <img
-                src="/slider/slide5.svg"
-                className=" max-w-[150px] "
-                alt=""
-              />
+              <img src="/slider/slide5.svg" className=" max-w-[150px] " alt="" />
             </div>
           </div>
 
@@ -452,24 +397,16 @@ const Home = () => {
               <img src="/slider/slide2.png" className=" max-w-[150px]" alt="" />
             </div>
             <div className="w-fit">
-              <img
-                src="/slider/slide3.webp"
-                className=" max-w-[150px] w-[100px] h-hull"
-                alt=""
-              />
+              <img src="/slider/slide3.webp" className=" max-w-[150px] w-[100px] h-hull" alt="" />
             </div>
             <div className="w-fit">
               <img src="/slider/slide4.png" className=" max-w-[150px]" alt="" />
             </div>
             <div className="w-fit">
-              <img
-                src="/slider/slide5.svg"
-                className=" max-w-[150px] "
-                alt=""
-              />
+              <img src="/slider/slide5.svg" className=" max-w-[150px] " alt="" />
             </div>
           </div>
-          
+
           <div className="flex gap-10 items-center sliderWraper">
             <div className="w-fit">
               <img src="/slider/slide1.png" className=" max-w-[150px]" alt="" />
@@ -478,21 +415,13 @@ const Home = () => {
               <img src="/slider/slide2.png" className=" max-w-[150px]" alt="" />
             </div>
             <div className="w-fit">
-              <img
-                src="/slider/slide3.webp"
-                className=" max-w-[150px] w-[100px] h-hull"
-                alt=""
-              />
+              <img src="/slider/slide3.webp" className=" max-w-[150px] w-[100px] h-hull" alt="" />
             </div>
             <div className="w-fit">
               <img src="/slider/slide4.png" className=" max-w-[150px]" alt="" />
             </div>
             <div className="w-fit">
-              <img
-                src="/slider/slide5.svg"
-                className=" max-w-[150px] "
-                alt=""
-              />
+              <img src="/slider/slide5.svg" className=" max-w-[150px] " alt="" />
             </div>
           </div>
         </div>
@@ -505,45 +434,38 @@ const Home = () => {
           <div id="AnyQuestionsSelect">
             <div className="acor-container">
               <input type="checkbox" name="chacor" id="chacor1" />
-              <label htmlFor="chacor1">
-                Как вы подсчитываете стоимость конструкции?
-              </label>
+              <label htmlFor="chacor1">Как вы подсчитываете стоимость конструкции?</label>
               <div className="acor-body">
                 <p>
                   У нас есть два способа подсчета стоимости конструкции.
                   <br />
                   <br />
-                  Во-первых, у нас есть каталог, в котором представлены наши
-                  товары с указанием цен. Вы можете ознакомиться с каталогом и
-                  выбрать необходимые материалы, а затем умножить их стоимость
-                  на нужное количество.
+                  Во-первых, у нас есть каталог, в котором представлены наши товары с указанием цен.
+                  Вы можете ознакомиться с каталогом и выбрать необходимые материалы, а затем
+                  умножить их стоимость на нужное количество.
                   <br />
                   <br />
-                  Во-вторых, на нашем сайте доступен калькулятор цен, который
-                  позволяет вам самостоятельно рассчитать стоимость товара. Вы
-                  можете выбрать нужные параметры и указать необходимые размеры
-                  или количество, и калькулятор автоматически вычислит общую
-                  стоимость конструкции на основе текущих цен.
+                  Во-вторых, на нашем сайте доступен калькулятор цен, который позволяет вам
+                  самостоятельно рассчитать стоимость товара. Вы можете выбрать нужные параметры и
+                  указать необходимые размеры или количество, и калькулятор автоматически вычислит
+                  общую стоимость конструкции на основе текущих цен.
                 </p>
               </div>
 
               <input type="checkbox" name="chacor" id="chacor2" />
               <label htmlFor="chacor2">
-                Могу ли я заказать индивидуальные товары с выбором толщины
-                материала и цены?
+                Могу ли я заказать индивидуальные товары с выбором толщины материала и цены?
               </label>
               <div className="acor-body">
                 <p>
-                  Да, у нас есть возможность заказать индивидуальные товары по
-                  вашим требованиям. Мы предлагаем широкий выбор материалов с
-                  разной толщиной, и вы можете выбрать наиболее подходящую для
-                  ваших потребностей.
+                  Да, у нас есть возможность заказать индивидуальные товары по вашим требованиям. Мы
+                  предлагаем широкий выбор материалов с разной толщиной, и вы можете выбрать
+                  наиболее подходящую для ваших потребностей.
                   <br />
                   <br />
-                  Кроме того, вы также можете указать желаемую цену для этих
-                  индивидуальных товаров. Наша команда свяжется с вами для
-                  обсуждения подробностей и предоставит вам точную информацию о
-                  возможностях и ценах для вашего заказа.
+                  Кроме того, вы также можете указать желаемую цену для этих индивидуальных товаров.
+                  Наша команда свяжется с вами для обсуждения подробностей и предоставит вам точную
+                  информацию о возможностях и ценах для вашего заказа.
                 </p>
               </div>
               {/* 
@@ -560,17 +482,15 @@ const Home = () => {
               </label>
               <div className="acor-body">
                 <p>
-                  Наша компания, специализирующаяся на тонколистовой отрасли,
-                  предлагает бесплатную консультацию для всех клиентов. <br />
+                  Наша компания, специализирующаяся на тонколистовой отрасли, предлагает бесплатную
+                  консультацию для всех клиентов. <br />
                   <br />
-                  Обратившись к нам, вы получите профессиональные рекомендации и
-                  советы по выбору и использованию металлпрофиля для ваших
-                  проектов.
+                  Обратившись к нам, вы получите профессиональные рекомендации и советы по выбору и
+                  использованию металлпрофиля для ваших проектов.
                   <br />
                   <br />
-                  Не упустите возможность получить бесплатную консультацию от
-                  опытных экспертов в области металлпрофиля и достигните успеха
-                  в ваших строительных задачах.
+                  Не упустите возможность получить бесплатную консультацию от опытных экспертов в
+                  области металлпрофиля и достигните успеха в ваших строительных задачах.
                 </p>
               </div>
             </div>
@@ -585,7 +505,7 @@ const Home = () => {
           <div className="OrderConsultationForm">
             <form
               onSubmit={(e) => {
-                if (checkCookie("ChangeForm")) {
+                if (checkCookie('ChangeForm')) {
                   setCheckCokkie(true);
                 } else {
                   setCheckCokkie(false);
@@ -595,8 +515,7 @@ const Home = () => {
                 setTimeout(() => {
                   setCheckForm(false);
                 }, 5000);
-              }}
-            >
+              }}>
               <label className="inputs">
                 <input
                   ref={message}
@@ -610,8 +529,8 @@ const Home = () => {
                   <PhoneInput
                     ref={message2}
                     className="ConsultationInpPhone"
-                    country={"uz"} // Укажите страну по умолчанию (например, 'us' для США)
-                    value={""}
+                    country={'uz'} // Укажите страну по умолчанию (например, 'us' для США)
+                    value={''}
                   />
                 </div>
               </label>
@@ -626,8 +545,7 @@ const Home = () => {
                         </p>
                       ) : (
                         <p className=" my-5  opacity-50">
-                          Заявка отправлена . Мы свяжемся с вами в течении 2х
-                          рабочих дней
+                          Заявка отправлена . Мы свяжемся с вами в течении 2х рабочих дней
                         </p>
                       )}
                     </>
@@ -642,8 +560,8 @@ const Home = () => {
               <label className="FormBtn">
                 <button id="ConsultationSubmit">ОТПРАВИТЬ</button>
                 <span>
-                  Нажимая кнопку «Отправить», я даю своё согласие на обработку и
-                  распространение персональных данных.
+                  Нажимая кнопку «Отправить», я даю своё согласие на обработку и распространение
+                  персональных данных.
                 </span>
               </label>
             </form>
